@@ -3,14 +3,21 @@ package org.ethan.oss.hook;
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.utils.NetUtil;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class Hook {
     private static final Hook INSTANCE = new Hook();
 
+    private final ArrayList<AccessorHook> accessorHooks = new ArrayList<>();
+
     public static Hook getInstance() {
         return INSTANCE;
+    }
+
+    public ArrayList<AccessorHook> getAccessorHooks() {
+        return accessorHooks;
     }
 
     public String getClass(String str, boolean field) {
@@ -45,6 +52,7 @@ public class Hook {
         ServerEngine.getInstance().setMethodMap(new HashMap<String, MethodHook>());
         StringBuilder builder = new StringBuilder();
         String[]      hooks   = NetUtil.readPage("https://pastebin.com/raw/RbKze8FA");
+        String into = null;
         for (String str : hooks) {
             if (str.contains("#")) {
                 String[] split     = str.split(" ");
@@ -52,6 +60,9 @@ public class Hook {
                 String   obfName   = split[3].replaceAll(",", "");
                 builder.append("Class:" + className + ":" + obfName);
                 builder.append("\n");
+
+                into = obfName.replaceAll("/", ".");
+                accessorHooks.add(new AccessorHook(className, obfName.replaceAll("/", ".")));
             }
             if (str.contains("~>")) {
                 String[] split      = str.split(" ");
@@ -66,7 +77,7 @@ public class Hook {
                 } else {
                     multNum = -1;
                 }
-                ServerEngine.getInstance().getFieldMap().put(fieldName, new FieldHook(fieldClass, fieldField, multNum));
+                ServerEngine.getInstance().getFieldMap().put(fieldName, new FieldHook(fieldClass, fieldField, multNum, into));
 
                 builder.append("Field:" + fieldName + ":" + obfName + ":" + multNum);
                 builder.append("\n");
