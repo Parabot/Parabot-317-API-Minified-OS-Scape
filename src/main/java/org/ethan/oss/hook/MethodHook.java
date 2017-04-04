@@ -12,4 +12,15 @@ public class MethodHook {
 
     }
 
+    public String getClazz() {
+        return clazz;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
 }
