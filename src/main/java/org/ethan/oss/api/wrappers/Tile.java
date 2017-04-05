@@ -2,17 +2,17 @@ package org.ethan.oss.api.wrappers;
 
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
-import org.parabot.osscape.api.methods.Players;
-import org.parabot.osscape.api.methods.Calculations;
-import org.parabot.osscape.api.methods.Game;
-import org.parabot.osscape.api.methods.Menu;
 import org.ethan.oss.api.methods.Walking;
-import org.parabot.osscape.api.interfaces.Interactable;
-import org.parabot.osscape.api.interfaces.Locatable;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.PolygonUtils;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.api.interfaces.Interactable;
+import org.parabot.osscape.api.interfaces.Locatable;
+import org.parabot.osscape.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Menu;
+import org.parabot.osscape.api.methods.Players;
 
 import java.awt.*;
 

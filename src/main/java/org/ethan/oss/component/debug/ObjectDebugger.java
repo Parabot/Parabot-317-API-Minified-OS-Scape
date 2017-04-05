@@ -2,10 +2,10 @@ package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.interactive.GameObjects;
-import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.GameObject;
 import org.ethan.oss.api.wrappers.GameObject.Type;
 import org.parabot.environment.api.utils.Filter;
+import org.parabot.osscape.api.methods.Game;
 
 import java.awt.*;
 

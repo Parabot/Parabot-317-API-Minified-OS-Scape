@@ -1,8 +1,8 @@
 package org.ethan.oss.component;
 
 import org.ethan.oss.component.debug.*;
-import org.parabot.osscape.api.interfaces.PaintListener;
 import org.ethan.oss.utils.Condition;
+import org.parabot.osscape.api.interfaces.PaintListener;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,8 +17,8 @@ public class RSCanvas extends java.awt.Canvas {
     private final        BufferedImage       gameBuffer       = new BufferedImage(765, 503, BufferedImage.TYPE_INT_RGB);
     private final        int                 FRAMESTEP        = 1000 / 60;
     private              List<PaintListener> listeners        = new ArrayList<>();
-    private long timeTaken = 0;
-    private long beginTime = 0;
+    private              long                timeTaken        = 0;
+    private              long                beginTime        = 0;
 
     public RSCanvas() {
         super();

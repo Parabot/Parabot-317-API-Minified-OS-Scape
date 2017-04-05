@@ -1,10 +1,10 @@
 package org.ethan.oss.api.input;
 
 import org.ethan.oss.ServerEngine;
-import org.parabot.osscape.api.methods.Calculations;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.api.methods.Calculations;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

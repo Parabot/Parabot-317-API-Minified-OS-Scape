@@ -3,11 +3,11 @@ package org.ethan.oss.api.randoms;
 import org.ethan.oss.api.randoms.impl.Login;
 import org.ethan.oss.api.randoms.impl.ModDetection;
 import org.ethan.oss.api.randoms.impl.WelcomeScreen;
-import org.parabot.osscape.api.interfaces.PaintListener;
 import org.ethan.oss.script.ScriptEngine;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.parabot.environment.scripts.Script;
+import org.parabot.osscape.api.interfaces.PaintListener;
 
 import java.awt.*;
 

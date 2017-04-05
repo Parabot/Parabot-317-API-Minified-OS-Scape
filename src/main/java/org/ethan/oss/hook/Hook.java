@@ -52,7 +52,7 @@ public class Hook {
         ServerEngine.getInstance().setMethodMap(new HashMap<String, MethodHook>());
         StringBuilder builder = new StringBuilder();
         String[]      hooks   = NetUtil.readPage("https://pastebin.com/raw/RbKze8FA");
-        String into = null;
+        String        into    = null;
         for (String str : hooks) {
             if (str.contains("#")) {
                 String[] split     = str.split(" ");

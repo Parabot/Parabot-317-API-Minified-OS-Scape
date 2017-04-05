@@ -464,13 +464,13 @@ public class Bank {
         //GameObject o = GameObjects.getNearbyBank();
         Npc n = Npcs.getNearbyBanker();
         if (!Bank.isOpen()) {
-                n.interact("Bank");
-                Condition.wait(new Condition.Check() {
-                    public boolean poll() {
-                        return Bank.isOpen();
-                    }
-                }, 100, 20);
-                return true;
+            n.interact("Bank");
+            Condition.wait(new Condition.Check() {
+                public boolean poll() {
+                    return Bank.isOpen();
+                }
+            }, 100, 20);
+            return true;
         }
 
         return false;

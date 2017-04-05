@@ -1,14 +1,14 @@
 package org.ethan.oss.api.interactive;
 
-import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.GameObject;
-import org.parabot.osscape.api.methods.Players;
-import org.parabot.osscape.api.wrapper.Player;
 import org.ethan.oss.api.wrappers.Tile;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
+import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.Player;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 public class GameObjects extends ReflWrapper {
-	public static GameObject[] getAll() {
+    public static GameObject[] getAll() {
         return getAll(new Filter<GameObject>() {
             @Override
             public boolean accept(GameObject gameObject) {
@@ -66,9 +66,9 @@ public class GameObjects extends ReflWrapper {
                             if (j != null) {
                                 GameObject obj = new GameObject(j, GameObject.Type.INTERACTIVE, x + baseX, y + baseY,
                                         z);
-								if (obj != null && (filter == null || filter.accept(obj))) {
-									objects.add(obj);
-								}
+                                if (obj != null && (filter == null || filter.accept(obj))) {
+                                    objects.add(obj);
+                                }
 
                             }
                         }
@@ -77,9 +77,9 @@ public class GameObjects extends ReflWrapper {
                     Object boundary = getFieldValue("BoundaryObject", groundTile);
                     if (boundary != null) {
                         GameObject obj = new GameObject(boundary, GameObject.Type.BOUNDARY, x + baseX, y + baseY, z);
-						if (obj != null && (filter == null || filter.accept(obj))) {
-							objects.add(obj);
-						}
+                        if (obj != null && (filter == null || filter.accept(obj))) {
+                            objects.add(obj);
+                        }
                     }
 
                 }
@@ -183,21 +183,21 @@ public class GameObjects extends ReflWrapper {
     public static GameObject getNearbyBank() {
         GameObject current = null;
         for (GameObject n : GameObjects.getAll()) {
-			if (Game.isLoggedIn() && n != null && n.isValid() && n.getLocation().distanceTo() < 15) {
-				if (n.hasAction("Bank", n.getActions()) && (current == null || current.getLocation().distanceTo() > Players.getMyPlayer()
-						.distanceTo(n.getLocation()))) {
-					current = n;
-				}
-			}
+            if (Game.isLoggedIn() && n != null && n.isValid() && n.getLocation().distanceTo() < 15) {
+                if (n.hasAction("Bank", n.getActions()) && (current == null || current.getLocation().distanceTo() > Players.getMyPlayer()
+                        .distanceTo(n.getLocation()))) {
+                    current = n;
+                }
+            }
         }
         return current;
     }
 
     public static GameObject getNext(Filter<GameObject> filter) {
         GameObject[] gameObjects = getAll(filter);
-		if (gameObjects == null || gameObjects.length < 1) {
-			return nil();
-		}
+        if (gameObjects == null || gameObjects.length < 1) {
+            return nil();
+        }
         return gameObjects[Random.nextInt(0, gameObjects.length)];
     }
 

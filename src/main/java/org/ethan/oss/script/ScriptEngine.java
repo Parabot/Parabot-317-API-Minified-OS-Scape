@@ -4,19 +4,19 @@ import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.listeners.*;
 import org.ethan.oss.api.randoms.RandomEvent;
 import org.ethan.oss.api.randoms.RandomEventHandler;
-import org.parabot.osscape.api.interfaces.PaintListener;
 import org.parabot.environment.scripts.Script;
+import org.parabot.osscape.api.interfaces.PaintListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ScriptEngine {
     public static ScriptEngine INSTANCE = new ScriptEngine();
-    public  RandomEventHandler randomEventHandler;
-    public  Script                script           = null;
-    private ExperienceMonitor  experienceMonitor;
-    private InventoryMonitor   inventoryMonitor;
-    private Thread             randomEventsThread;
+    public RandomEventHandler randomEventHandler;
+    public Script script = null;
+    private ExperienceMonitor experienceMonitor;
+    private InventoryMonitor  inventoryMonitor;
+    private Thread            randomEventsThread;
     ;
     private List<MessageListener> messageListeners = new ArrayList<MessageListener>();
     private PaintListener paintListener;

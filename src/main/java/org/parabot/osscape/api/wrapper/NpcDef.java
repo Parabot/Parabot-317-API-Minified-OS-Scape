@@ -13,19 +13,19 @@ public class NpcDef {
         this.accessor = accessor;
     }
 
-    public String getName(){
+    public String getName() {
         return accessor.getNpcName();
     }
 
-    public String[] getActions(){
+    public String[] getActions() {
         return accessor.getNpcActions();
     }
 
-    public int getCombatLevel(){
+    public int getCombatLevel() {
         return accessor.getNpcCombatLevel();
     }
 
-    public int getId(){
+    public int getId() {
         return accessor.getNpcID();
     }
 

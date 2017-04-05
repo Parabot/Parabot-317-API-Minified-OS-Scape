@@ -2,18 +2,25 @@ package org.parabot.osscape.accessors;
 
 public interface Client {
     linkedList[][][] getGroundItems();
+
     byte[][][] getTileSettings();
-    int [][][] getTileHeights();
+
+    int[][][] getTileHeights();
 
     Player[] getLocalPlayers();
 
     Npc[] getLocalNpcs();
 
     int[] getWidgetWidths();
+
     int[] getWidgetHeights();
+
     int[] getExperiences();
+
     int[] getRealLevels();
+
     int[] getCurrentLevels();
+
     int[] getGameSettings();
 
     String[] getMenuActions();
@@ -47,6 +54,7 @@ public interface Client {
     int getCameraScale();
 
     int getMenuHeight();
+
     int getMenuWidth();
 
     int getMenuX();

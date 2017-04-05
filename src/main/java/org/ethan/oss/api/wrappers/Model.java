@@ -1,11 +1,11 @@
 package org.ethan.oss.api.wrappers;
 
-import org.parabot.osscape.api.methods.Calculations;
-import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.PolygonUtils;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Game;
 
 import java.awt.*;
 import java.util.Arrays;

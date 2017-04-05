@@ -2,12 +2,12 @@ package org.ethan.oss.api.wrappers;
 
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Widgets;
-import org.parabot.osscape.api.methods.Menu;
-import org.parabot.osscape.api.interfaces.Interactable;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.api.interfaces.Interactable;
+import org.parabot.osscape.api.methods.Menu;
 
 import java.awt.*;
 import java.util.ArrayList;

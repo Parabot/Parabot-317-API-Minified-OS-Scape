@@ -29,39 +29,39 @@ public class Game {
         return accessor.getEnergy();
     }
 
-    public static int getMapOffset(){
+    public static int getMapOffset() {
         return accessor.getMapOffset();
     }
 
-    public static int getMapScale(){
+    public static int getMapScale() {
         return accessor.getMapScale();
     }
 
-    public static int getMapAngle(){
+    public static int getMapAngle() {
         return accessor.getMapAngle();
     }
 
-    public static int getCameraScale(){
+    public static int getCameraScale() {
         return accessor.getCameraScale();
     }
 
-    public static int getViewportWidth(){
+    public static int getViewportWidth() {
         return accessor.getViewportWidth();
     }
 
-    public static int getViewportHeight(){
+    public static int getViewportHeight() {
         return accessor.getViewportHeight();
     }
 
-    public static byte[][][] getTileSettings(){
+    public static byte[][][] getTileSettings() {
         return accessor.getTileSettings();
     }
 
-    public static int[][][] getTileHeights(){
+    public static int[][][] getTileHeights() {
         return accessor.getTileHeights();
     }
 
-    public static Settings getSettings(){
+    public static Settings getSettings() {
         return new Settings(accessor.getGameSettings());
     }
 
@@ -69,36 +69,35 @@ public class Game {
         return getSettings().get(301) == 1;
     }
 
-    public static int getMenuX(){
+    public static int getMenuX() {
         return accessor.getMenuX();
     }
 
-    public static int getMenuY(){
+    public static int getMenuY() {
         return accessor.getMenuY();
     }
 
-    public static int getMenuWidth(){
+    public static int getMenuWidth() {
         return accessor.getMenuWidth();
     }
 
-    public static int getMenuHeight(){
+    public static int getMenuHeight() {
         return accessor.getMenuHeight();
     }
 
-    public static int getMenuCount(){
+    public static int getMenuCount() {
         return accessor.getMenuCount();
     }
 
-    public static boolean isMenuOpen(){
+    public static boolean isMenuOpen() {
         return accessor.getIsMenuOpen();
     }
 
-    public static String[] getMenuActions(){
+    public static String[] getMenuActions() {
         return accessor.getMenuActions();
     }
 
-
-    public static String[] getMenuOptions(){
+    public static String[] getMenuOptions() {
         return accessor.getMenuOptions();
     }
 
@@ -113,7 +112,7 @@ public class Game {
         return accessor.getLoginState();
     }
 
-    public static LoginState getLoginState(){
+    public static LoginState getLoginState() {
         return LoginState.getStateForStateId(accessor.getLoginState());
     }
 
@@ -125,11 +124,11 @@ public class Game {
         return accessor.getLoginState();
     }
 
-    public static boolean isRunning(){
+    public static boolean isRunning() {
         return getSettings().get(173) > 0;
     }
 
-    public static void enableRunning(){
+    public static void enableRunning() {
         WidgetChild c = Widgets.get(160, 21);
         if (getEnergy() > 0) {
             if (c != null) {
@@ -180,18 +179,18 @@ public class Game {
             this.stateId = stateId;
         }
 
-        public int getStateId() {
-            return stateId;
-        }
-
-        private static LoginState getStateForStateId(int stateId){
-            for (LoginState state : LoginState.values()){
-                if (state.getStateId() == stateId){
+        private static LoginState getStateForStateId(int stateId) {
+            for (LoginState state : LoginState.values()) {
+                if (state.getStateId() == stateId) {
                     return state;
                 }
             }
 
             return null;
+        }
+
+        public int getStateId() {
+            return stateId;
         }
     }
 }

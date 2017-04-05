@@ -1,7 +1,7 @@
 package org.ethan.oss.component.debug;
 
-import org.parabot.osscape.api.interfaces.PaintListener;
 import org.ethan.oss.utils.BasicTimer;
+import org.parabot.osscape.api.interfaces.PaintListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;

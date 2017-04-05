@@ -5,18 +5,18 @@ import org.ethan.oss.api.callbacks.ModelCallBack;
 import org.ethan.oss.api.definitions.ObjectDefinition;
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
-import org.parabot.osscape.api.methods.Calculations;
-import org.parabot.osscape.api.methods.Game;
-import org.parabot.osscape.api.methods.Menu;
 import org.ethan.oss.api.methods.Walking;
-import org.parabot.osscape.api.interfaces.Identifiable;
-import org.parabot.osscape.api.interfaces.Interactable;
-import org.parabot.osscape.api.interfaces.Locatable;
-import org.parabot.osscape.api.interfaces.Nameable;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.api.interfaces.Identifiable;
+import org.parabot.osscape.api.interfaces.Interactable;
+import org.parabot.osscape.api.interfaces.Locatable;
+import org.parabot.osscape.api.interfaces.Nameable;
+import org.parabot.osscape.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Menu;
 
 import java.awt.*;
 
@@ -27,6 +27,7 @@ public class GameObject extends ReflWrapper implements Identifiable, Nameable, L
     private Tile             tile;
     private int              id;
     private ObjectDefinition objectDefinition;
+
     public GameObject(Object raw, Type type, int x, int y, int z) {
         this.raw = raw;
         this.type = type;

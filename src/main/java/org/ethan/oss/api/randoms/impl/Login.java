@@ -3,22 +3,22 @@ package org.ethan.oss.api.randoms.impl;
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.input.Keyboard;
 import org.ethan.oss.api.input.Mouse;
-import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.randoms.RandomEvent;
 import org.ethan.oss.script.ScriptEngine;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.parabot.environment.scripts.Script;
+import org.parabot.osscape.api.methods.Game;
 
 import java.awt.*;
 
 public class Login extends RandomEvent {
 
-    private final Rectangle    USER_EXIST = new Rectangle(398, 278, 129, 12);
+    private final Rectangle    USER_EXIST  = new Rectangle(398, 278, 129, 12);
     private final Rectangle    USER_CANCEL = new Rectangle(397, 307, 135, 30);
-    private       boolean      clicked = false;
-    private       String       name = "Login";
-    private       ServerEngine engine = ServerEngine.getInstance();
+    private       boolean      clicked     = false;
+    private       String       name        = "Login";
+    private       ServerEngine engine      = ServerEngine.getInstance();
 
     @Override
     public String getName() {

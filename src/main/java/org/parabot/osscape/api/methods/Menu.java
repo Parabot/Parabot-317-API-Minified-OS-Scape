@@ -1,7 +1,6 @@
 package org.parabot.osscape.api.methods;
 
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.parabot.osscape.api.wrapper.Character;
