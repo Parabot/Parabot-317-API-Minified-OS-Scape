@@ -2,7 +2,6 @@ package org.parabot.osscape.api.methods;
 
 import org.ethan.oss.api.enums.Tab;
 import org.ethan.oss.api.interactive.Widgets;
-import org.ethan.oss.api.methods.Settings;
 import org.ethan.oss.api.wrappers.WidgetChild;
 import org.parabot.osscape.Loader;
 import org.parabot.osscape.accessors.Client;
@@ -62,13 +61,17 @@ public class Game {
         return accessor.getTileHeights();
     }
 
+    public static Settings getSettings(){
+        return new Settings(accessor.getGameSettings());
+    }
+
     public static boolean isUsingSpecialAttack() {
-        return Settings.get(301) == 1;
+        return getSettings().get(301) == 1;
     }
 
     public static int getSpecialAttackPercent() {
-        if (Settings.get(300) > 0) {
-            return Settings.get(300) / 10;
+        if (getSettings().get(300) > 0) {
+            return getSettings().get(300) / 10;
         }
         return 0;
     }
@@ -90,7 +93,7 @@ public class Game {
     }
 
     public static boolean isRunning(){
-        return Settings.get(173) > 0;
+        return getSettings().get(173) > 0;
     }
 
     public static void enableRunning(){

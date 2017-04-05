@@ -1,8 +1,8 @@
 package org.ethan.oss.api.enums;
 
 import org.ethan.oss.api.interactive.Widgets;
-import org.ethan.oss.api.methods.Settings;
 import org.ethan.oss.api.wrappers.WidgetChild;
+import org.parabot.osscape.api.methods.Game;
 
 public final class Prayers {
     public static final int PRAYER_TAB       = 541;
@@ -28,7 +28,7 @@ public final class Prayers {
     }
 
     public static boolean usingQuickPrayer() {
-        return Settings.get(375) == 1;
+        return Game.getSettings().get(375) == 1;
     }
 
     public static void toggleQuickPrayer() {

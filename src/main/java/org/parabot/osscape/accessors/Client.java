@@ -14,6 +14,7 @@ public interface Client {
     int[] getExperiences();
     int[] getRealLevels();
     int[] getCurrentLevels();
+    int[] getGameSettings();
 
     String[] getMenuActions();
 

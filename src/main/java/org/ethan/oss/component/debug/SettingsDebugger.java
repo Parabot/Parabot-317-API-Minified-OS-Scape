@@ -1,7 +1,7 @@
 package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.methods.Settings;
+import org.parabot.osscape.api.methods.Game;
 
 import java.awt.*;
 
@@ -22,7 +22,7 @@ public class SettingsDebugger extends Debugger<String> {
     @Override
     public void render(Graphics2D graphics) {
         for (int i = 0; i < array.length; i++) {
-            int latest = Settings.get(i);
+            int latest = Game.getSettings().get(i);
             if (array[i] != latest) {
                 if (latest != -1) {
                     if (i != 0) {
@@ -32,7 +32,7 @@ public class SettingsDebugger extends Debugger<String> {
             }
         }
         for (int i = 1; i < array.length; i++) {
-            array[i] = Settings.get(i);
+            array[i] = Game.getSettings().get(i);
         }
     }
 
