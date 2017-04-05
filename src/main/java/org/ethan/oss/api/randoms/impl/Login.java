@@ -3,7 +3,7 @@ package org.ethan.oss.api.randoms.impl;
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.input.Keyboard;
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.randoms.RandomEvent;
 import org.ethan.oss.script.ScriptEngine;
 import org.ethan.oss.utils.Condition;
@@ -32,7 +32,7 @@ public class Login extends RandomEvent {
 
     @Override
     public boolean active() {
-        return Game.getGameState() == Game.STATE_LOG_IN_SCREEN;
+        return Game.getLoginState().equals(Game.LoginState.STATE_LOG_IN_SCREEN);
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Login extends RandomEvent {
                 ScriptEngine.getInstance().setScriptState(Script.STATE_STOPPED);
                 reset();
             }
-            for (int i = 0; i < 25 && (Game.getGameState() == Game.STATE_LOG_IN_SCREEN); i++, Condition.sleep(Random.nextInt(100, 150))) {
+            for (int i = 0; i < 25 && active(); i++, Condition.sleep(Random.nextInt(100, 150))) {
                 ;
             }
             clicked = false;

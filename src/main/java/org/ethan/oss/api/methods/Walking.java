@@ -12,6 +12,7 @@ import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.api.methods.Game;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -158,7 +159,7 @@ public class Walking extends ReflWrapper {
         }
         if (!Game.isRunning() && useRun) {
             if (Game.getEnergy() >= Random.nextInt(10, 30)) {
-                Game.toggleRun();
+                Game.enableRunning();
             }
         }
         Tile step = getClosestTileOnMap(target);

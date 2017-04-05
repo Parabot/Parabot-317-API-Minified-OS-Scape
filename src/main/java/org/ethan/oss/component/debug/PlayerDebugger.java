@@ -2,7 +2,7 @@ package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.interactive.Players;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.Player;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;

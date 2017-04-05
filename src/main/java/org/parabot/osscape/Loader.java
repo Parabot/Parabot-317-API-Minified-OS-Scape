@@ -33,17 +33,20 @@ import java.net.URL;
 public class Loader extends ServerProvider {
     private boolean extended = true;
 
-    public static Client getClient() {
-        Object    client    = null;
-        Objenesis objenesis = new ObjenesisStd();
+    private static Client client = null;
 
-        try {
-            client = objenesis.newInstance(Context.getInstance().getASMClassLoader().loadClass("oss/iIIiiiiIiI"));
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+    public static Client getClient() {
+        if (client == null) {
+            Objenesis objenesis = new ObjenesisStd();
+
+            try {
+                client = (Client) objenesis.newInstance(Context.getInstance().getASMClassLoader().loadClass("oss/iIIiiiiIiI"));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
-        return (Client) client;
+        return client;
     }
 
     @Override

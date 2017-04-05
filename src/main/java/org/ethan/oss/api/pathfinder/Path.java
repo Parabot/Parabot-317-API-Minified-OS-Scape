@@ -1,6 +1,6 @@
 package org.ethan.oss.api.pathfinder;
 
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.Tile;
 
 import java.awt.*;

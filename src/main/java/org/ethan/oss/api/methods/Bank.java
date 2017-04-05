@@ -10,6 +10,7 @@ import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
+import org.parabot.osscape.api.methods.Game;
 
 import java.util.ArrayList;
 

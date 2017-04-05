@@ -2,7 +2,7 @@ package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.enums.Tab;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Inventory;
 import org.ethan.oss.api.methods.Item;
 import org.parabot.environment.api.utils.Filter;

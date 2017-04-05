@@ -2,7 +2,7 @@ package org.ethan.oss.utils;
 
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.methods.Calculations;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.component.debug.PlayerDebugger;
 import org.ethan.oss.hook.Hook;
 import org.ethan.oss.interfaces.StatePredicate;

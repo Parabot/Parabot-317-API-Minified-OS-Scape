@@ -5,7 +5,7 @@ import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
 import org.ethan.oss.api.interactive.Players;
 import org.ethan.oss.api.methods.Calculations;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.api.pathfinder.Path;
 import org.ethan.oss.api.pathfinder.impl.RSMapPathFinder;

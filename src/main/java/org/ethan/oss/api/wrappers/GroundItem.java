@@ -4,7 +4,7 @@ import org.ethan.oss.api.definitions.ItemDefinition;
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
 import org.ethan.oss.api.methods.Calculations;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Menu;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.interfaces.Identifiable;

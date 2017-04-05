@@ -1,7 +1,7 @@
 package org.ethan.oss.api.enums;
 
 import org.ethan.oss.api.interactive.Widgets;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.WidgetChild;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;

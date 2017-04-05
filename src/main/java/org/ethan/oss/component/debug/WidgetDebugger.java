@@ -3,7 +3,7 @@ package org.ethan.oss.component.debug;
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Widgets;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.Widget;
 import org.ethan.oss.api.wrappers.WidgetChild;
 

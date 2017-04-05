@@ -3,7 +3,7 @@ package org.ethan.oss.component.debug;
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.interactive.Camera;
 import org.ethan.oss.api.interactive.Players;
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Menu;
 
 import java.awt.*;

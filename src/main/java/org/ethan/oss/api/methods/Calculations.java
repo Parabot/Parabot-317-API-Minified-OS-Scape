@@ -1,11 +1,12 @@
 package org.ethan.oss.api.methods;
 
 import org.ethan.oss.api.interactive.Camera;
-import org.ethan.oss.api.interactive.Players;
 import org.ethan.oss.api.wrappers.Tile;
 import org.ethan.oss.interfaces.Locatable;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.parabot.core.Context;
+import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Players;
 
 import java.applet.Applet;
 import java.awt.*;
@@ -24,7 +25,7 @@ public class Calculations extends ReflWrapper {
     }
 
     public static int angleToTile(Tile t) {
-        Tile me = Players.getLocal().getLocation();
+        Tile me = Players.getMyPlayer().getLocation();
 
         int angle = (int) Math.toDegrees(Math.atan2(t.getY() - me.getY(), t.getX() - me.getX()));
         return angle >= 0 ? angle : 360 + angle;
@@ -43,7 +44,7 @@ public class Calculations extends ReflWrapper {
     }
 
     public static int distanceTo(Tile a) {
-        final Tile loc = Players.getLocal().getLocation();
+        final Tile loc = Players.getMyPlayer().getLocation();
         return (int) distanceBetween(a.getX(), a.getY(), loc.getX(), loc.getY());
     }
 
@@ -57,7 +58,7 @@ public class Calculations extends ReflWrapper {
     }
 
     public static int distanceTo(Locatable a) {
-        final Tile loc = Players.getLocal().getLocation();
+        final Tile loc = Players.getMyPlayer().getLocation();
         return distanceBetween(a.getLocation().getX(), a.getLocation().getY(), loc.getX(), loc.getY());
     }
 

@@ -1,6 +1,6 @@
 package org.ethan.oss.api.interactive;
 
-import org.ethan.oss.api.methods.Game;
+import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.NPC;
 import org.ethan.oss.api.wrappers.Tile;
 import org.ethan.oss.reflection.ReflWrapper;
