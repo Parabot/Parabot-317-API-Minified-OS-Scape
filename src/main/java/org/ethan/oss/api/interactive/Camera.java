@@ -1,12 +1,13 @@
 package org.ethan.oss.api.interactive;
 
 import org.ethan.oss.api.input.Keyboard;
-import org.ethan.oss.api.wrappers.Player;
+import org.parabot.osscape.api.wrapper.Player;
 import org.ethan.oss.api.wrappers.Tile;
 import org.ethan.oss.interfaces.Locatable;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
+import org.parabot.osscape.api.methods.Players;
 
 import java.awt.event.KeyEvent;
 
@@ -33,7 +34,7 @@ public class Camera extends ReflWrapper {
     }
 
     public static int getAngleTo(final Locatable locatable) {
-        final Player local = Players.getLocal();
+        final Player local = Players.getMyPlayer();
         final Tile   t1    = local != null ? local.getLocation() : null;
         final Tile   t2    = locatable.getLocation();
         return t1 != null && t2 != null ? ((int) Math.toDegrees(Math.atan2(t2.getY() - t1.getY(), t2.getX() - t1.getX()))) - 90 : 0;

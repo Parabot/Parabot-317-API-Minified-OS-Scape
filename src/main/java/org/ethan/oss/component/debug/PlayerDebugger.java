@@ -1,9 +1,9 @@
 package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.methods.Game;
-import org.ethan.oss.api.wrappers.Player;
+import org.parabot.osscape.api.wrapper.Player;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
 
@@ -14,12 +14,7 @@ public class PlayerDebugger extends Debugger<Player> {
 
     @Override
     public Player[] elements() {
-        return Players.getAll(new Filter<Player>() {
-            @Override
-            public boolean accept(Player p) {
-                return p.isValid();
-            }
-        });
+        return Players.getNearest();
     }
 
     @Override
@@ -33,7 +28,7 @@ public class PlayerDebugger extends Debugger<Player> {
             Utilities.populateCheckedList("CheckedAccounts");
         } else {
             for (Player p : refresh()) {
-                if (p != null && p.isValid()) {
+                if (p != null) {
                     // Point point = p.getPointOnScreen();
                     int size = ServerEngine.getInstance().getNames().size();
                     if (!ServerEngine.getInstance().getNames().contains(p.getName()) && !ServerEngine.getInstance().getPreCheckedNames().contains(p.getName())) {

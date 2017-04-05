@@ -7,6 +7,7 @@ import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
+import org.parabot.osscape.api.methods.Players;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,7 @@ public class GroundItems extends ReflWrapper {
     }
 
     public static GroundItem getNearest(Filter<GroundItem> filter) {
-        return getNearest(Players.getLocal().getLocation(), filter);
+        return getNearest(Players.getMyPlayer().getLocation(), filter);
     }
 
     public static GroundItem getNearest(Tile start, Filter<GroundItem> filter) {
@@ -82,7 +83,7 @@ public class GroundItems extends ReflWrapper {
     }
 
     public static GroundItem getNearest(final int... ids) {
-        return getNearest(Players.getLocal().getLocation(), new Filter<GroundItem>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<GroundItem>() {
             @Override
             public boolean accept(GroundItem groundItem) {
                 return groundItem.isValid() && Utilities.inArray(groundItem.getId(), ids);
@@ -91,7 +92,7 @@ public class GroundItems extends ReflWrapper {
     }
 
     public static GroundItem getNearest(final String... names) {
-        return getNearest(Players.getLocal().getLocation(), new Filter<GroundItem>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<GroundItem>() {
             @Override
             public boolean accept(GroundItem groundItem) {
                 return groundItem.isValid() && Utilities.inArray(groundItem.getName(), names);
@@ -100,7 +101,7 @@ public class GroundItems extends ReflWrapper {
     }
 
     public static GroundItem getAt(final Tile tile) {
-        return getNearest(Players.getLocal().getLocation(), new Filter<GroundItem>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<GroundItem>() {
 
             @Override
             public boolean accept(GroundItem obj) {

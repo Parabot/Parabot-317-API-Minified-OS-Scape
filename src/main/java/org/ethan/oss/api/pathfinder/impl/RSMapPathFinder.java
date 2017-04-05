@@ -1,6 +1,6 @@
 package org.ethan.oss.api.pathfinder.impl;
 
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.pathfinder.AStarPathFinder;
 import org.ethan.oss.api.pathfinder.ClosestHeuristic;
@@ -28,8 +28,8 @@ public class RSMapPathFinder {
     public Path getPath(int destX, int destY, int full) {
         reload();
         Point destPoint = new Point(destX, destY);
-        return getPath(Game.getPlane(), Players.getLocal().getX(),
-                Players.getLocal().getY(),
+        return getPath(Game.getPlane(), Players.getMyPlayer().getX(),
+                Players.getMyPlayer().getY(),
                 destPoint.x,
                 destPoint.y, full);
     }

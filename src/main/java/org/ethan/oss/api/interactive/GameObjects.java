@@ -2,7 +2,8 @@ package org.ethan.oss.api.interactive;
 
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.wrappers.GameObject;
-import org.ethan.oss.api.wrappers.Player;
+import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.Player;
 import org.ethan.oss.api.wrappers.Tile;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Random;
@@ -89,7 +90,7 @@ public class GameObjects extends ReflWrapper {
     }
 
     public static GameObject getNearest(Filter<GameObject> filter) {
-        return getNearest(Players.getLocal().getLocation(), filter);
+        return getNearest(Players.getMyPlayer().getLocation(), filter);
     }
 
     public static GameObject getNearest(Tile start, Filter<GameObject> filter) {
@@ -105,7 +106,7 @@ public class GameObjects extends ReflWrapper {
     }
 
     public static GameObject getNearest(final int... ids) {
-        return getNearest(Players.getLocal().getLocation(), new Filter<GameObject>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<GameObject>() {
             @Override
             public boolean accept(GameObject gameObject) {
                 return gameObject.isValid() && Utilities.inArray(gameObject.getId(), ids);
@@ -114,7 +115,7 @@ public class GameObjects extends ReflWrapper {
     }
 
     public static GameObject getNearest(final String... names) {
-        return getNearest(Players.getLocal().getLocation(), new Filter<GameObject>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<GameObject>() {
             @Override
             public boolean accept(GameObject groundItem) {
                 return groundItem.isValid() && Utilities.inArray(groundItem.getName(), names);
@@ -123,7 +124,7 @@ public class GameObjects extends ReflWrapper {
     }
 
     public static GameObject getAt(final Tile tile) {
-        return getNearest(Players.getLocal().getLocation(), new Filter<GameObject>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<GameObject>() {
 
             @Override
             public boolean accept(GameObject obj) {
@@ -145,15 +146,15 @@ public class GameObjects extends ReflWrapper {
             }
         });
         Player[] players = Players
-                .getAll(new Filter<Player>() {
+                .getNearest(new Filter<Player>() {
                     @Override
                     public boolean accept(Player player) {
-                        return player.isValid() && !player.equals(Players.getLocal()) && player.getAnimation() != -1;
+                        return !player.equals(Players.getMyPlayer()) && player.getAnimation() != -1;
                     }
                 });
         for (Player player : players) {
             Tile loc  = player.getLocation();
-            Tile rock = Players.getLocal().getLocation();
+            Tile rock = Players.getMyPlayer().getLocation();
             switch (player.getOrientation()) {
                 case 0:
                     rock = new Tile(loc.getX(), loc.getY() - 1);
@@ -183,7 +184,7 @@ public class GameObjects extends ReflWrapper {
         GameObject current = null;
         for (GameObject n : GameObjects.getAll()) {
 			if (Game.isLoggedIn() && n != null && n.isValid() && n.getLocation().distanceTo() < 15) {
-				if (n.hasAction("Bank", n.getActions()) && (current == null || current.getLocation().distanceTo() > Players.getLocal()
+				if (n.hasAction("Bank", n.getActions()) && (current == null || current.getLocation().distanceTo() > Players.getMyPlayer()
 						.distanceTo(n.getLocation()))) {
 					current = n;
 				}

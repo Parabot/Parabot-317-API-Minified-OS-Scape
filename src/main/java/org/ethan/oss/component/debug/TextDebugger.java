@@ -2,7 +2,7 @@ package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.interactive.Camera;
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Menu;
 
@@ -18,11 +18,11 @@ public class TextDebugger extends Debugger<String> {
     public String[] elements() {
         debuggedList.clear();
 
-        drawText(engine.isDebugText(), "Animation -^^> " + Players.getLocal().getAnimation());
+        drawText(engine.isDebugText(), "Animation -^^> " + Players.getMyPlayer().getAnimation());
         drawText(engine.isDebugText(), "Logged in -^^> " + Game.isLoggedIn() + " : " + Game.getGameState());
-        drawText(engine.isDebugText(), "Moving:  -^^> " + Players.getLocal().isMoving());
-        drawText(engine.isDebugText(), "Player Location -^^> [" + Players.getLocal().getLocation().getX() + " - "
-                + Players.getLocal().getLocation().getY() + "]");
+        drawText(engine.isDebugText(), "Moving:  -^^> " + Players.getMyPlayer().isMoving());
+        drawText(engine.isDebugText(), "Player Location -^^> [" + Players.getMyPlayer().getLocation().getX() + " - "
+                + Players.getMyPlayer().getLocation().getY() + "]");
         drawText(engine.isDebugText(), "Floor -^^> " + Game.getPlane());
         drawText(engine.isDebugText(), "Map Base -^^> [" + Game.getBaseX() + " , " + Game.getBaseY() + "]");
         drawText(engine.isDebugText(),

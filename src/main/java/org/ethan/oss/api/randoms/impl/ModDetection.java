@@ -3,13 +3,13 @@ package org.ethan.oss.api.randoms.impl;
 import org.ethan.oss.Constants;
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.enums.Tab;
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.ethan.oss.api.interactive.Widgets;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Inventory;
 import org.ethan.oss.api.methods.Item;
 import org.ethan.oss.api.randoms.RandomEvent;
-import org.ethan.oss.api.wrappers.Player;
+import org.parabot.osscape.api.wrapper.Player;
 import org.ethan.oss.api.wrappers.WidgetChild;
 import org.ethan.oss.utils.Condition;
 import org.parabot.environment.api.utils.Filter;
@@ -20,7 +20,7 @@ public class ModDetection extends RandomEvent {
     private boolean sentString = false;
 
     public static final Player getNextStaff() {
-        Player targ = Players.getNearest(new Filter<Player>() {
+        Player[] targ = Players.getNearest(new Filter<Player>() {
 
             @Override
             public boolean accept(Player p) {
@@ -34,7 +34,7 @@ public class ModDetection extends RandomEvent {
                 return false;
             }
         });
-        return targ;
+        return targ[0];
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ModDetection extends RandomEvent {
     public boolean active() {
         Player p = getNextStaff();
         if (Constants.EDGEVILLE_TILE.distanceTo() > 70) {
-            if (p != null && p.isValid()) {
+            if (p != null) {
                 return true;
             }
         }

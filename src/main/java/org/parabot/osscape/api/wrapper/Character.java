@@ -3,7 +3,7 @@ package org.parabot.osscape.api.wrapper;
 import org.ethan.oss.api.callbacks.ModelCallBack;
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.ethan.oss.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Walking;
@@ -297,13 +297,13 @@ public abstract class Character implements Locatable, Interactable {
             return false;
         }
 
-        if (this.getInteracting().equals(Players.getLocal())) {
+        if (this.getInteracting().equals(Players.getMyPlayer())) {
             return true;
         }
         return false;
     }
 
-    public boolean isInteractingWithActor(org.ethan.oss.api.wrappers.Actor actor) {
+    public boolean isInteractingWithActor(org.parabot.osscape.api.wrapper.Character actor) {
         if (!Game.isLoggedIn()) {
             return false;
         }
@@ -325,7 +325,7 @@ public abstract class Character implements Locatable, Interactable {
         return accessor.getSpokenText();
     }
 
-    public boolean isInCombatWith(org.ethan.oss.api.wrappers.Actor actor) {
+    public boolean isInCombatWith(org.parabot.osscape.api.wrapper.Character actor) {
         if (!Game.isLoggedIn()) {
             return false;
         }

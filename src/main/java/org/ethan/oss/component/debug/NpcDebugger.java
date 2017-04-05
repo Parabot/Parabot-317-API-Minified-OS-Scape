@@ -15,7 +15,7 @@ public class NpcDebugger extends Debugger<NPC> {
         return Npcs.getAll(new Filter<NPC>() {
             @Override
             public boolean accept(NPC n) {
-                return n.isValid() && n.distanceTo() < 7;
+                return n.distanceTo() < 7;
             }
         });
     }
@@ -30,7 +30,7 @@ public class NpcDebugger extends Debugger<NPC> {
         final FontMetrics metrics = graphics.getFontMetrics();
 
         for (NPC n : refresh()) {
-            if (n != null && n.isValid()) {
+            if (n != null) {
 
                 Point point = n.getPointOnScreen();
 

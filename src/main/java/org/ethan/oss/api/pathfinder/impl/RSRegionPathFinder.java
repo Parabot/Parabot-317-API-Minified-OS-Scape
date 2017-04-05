@@ -1,6 +1,6 @@
 package org.ethan.oss.api.pathfinder.impl;
 
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.api.pathfinder.AStarPathFinder;
@@ -28,8 +28,8 @@ public class RSRegionPathFinder {
     public Path getPath(int destX, int destY, int full) {
         reload();
         Point destPoint = getFixedPoint(destX, destY);
-        return getPath(Game.getPlane(), Players.getLocal().getLocalX() >> 7,
-                Players.getLocal().getLocalY() >> 7,
+        return getPath(Game.getPlane(), Players.getMyPlayer().getLocalX() >> 7,
+                Players.getMyPlayer().getLocalY() >> 7,
                 destPoint.x,
                 destPoint.y, full);
     }

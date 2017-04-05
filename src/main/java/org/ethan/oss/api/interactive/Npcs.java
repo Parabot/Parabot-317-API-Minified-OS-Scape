@@ -7,6 +7,7 @@ import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
+import org.parabot.osscape.api.methods.Players;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Npcs extends ReflWrapper {
         return getAll(new Filter<NPC>() {
             @Override
             public boolean accept(NPC npc) {
-                return npc.isValid() && npc.getName() != null && Utilities.inArray(npc.getName(), names);
+                return npc.getName() != null && Utilities.inArray(npc.getName(), names);
             }
         });
     }
@@ -52,14 +53,14 @@ public class Npcs extends ReflWrapper {
     }
 
     public static NPC getNearest(Filter<NPC> filter) {
-        return getNearest(Players.getLocal().getLocation(), filter);
+        return getNearest(Players.getMyPlayer().getLocation(), filter);
     }
 
     public static NPC getNearest(Tile location, Filter<NPC> filter) {
         NPC closet   = new NPC(null);
         int distance = 9999;
         for (NPC npc : getAll(filter)) {
-            if (npc.isValid() && distance > npc.distanceTo(location)) {
+            if (distance > npc.distanceTo(location)) {
                 closet = npc;
                 distance = npc.distanceTo(location);
             }
@@ -71,10 +72,10 @@ public class Npcs extends ReflWrapper {
         if (!Game.isLoggedIn()) {
             return new NPC(null);
         }
-        return getNearest(Players.getLocal().getLocation(), new Filter<NPC>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<NPC>() {
             @Override
             public boolean accept(NPC npc) {
-                return npc.isValid() && Utilities.inArray(npc.getId(), ids);
+                return Utilities.inArray(npc.getId(), ids);
             }
         });
     }
@@ -83,17 +84,17 @@ public class Npcs extends ReflWrapper {
         if (!Game.isLoggedIn()) {
             return new NPC(null);
         }
-        return getNearest(Players.getLocal().getLocation(), new Filter<NPC>() {
+        return getNearest(Players.getMyPlayer().getLocation(), new Filter<NPC>() {
             @Override
             public boolean accept(NPC npc) {
-                return npc.isValid() && Utilities.inArray(npc.getName(), names);
+                return Utilities.inArray(npc.getName(), names);
             }
         });
     }
 
     public static NPC getNext(Filter<NPC> npcFilter) {
         NPC[] npcs = Npcs.getAll(npcFilter);
-        if (npcs == null || npcs.length < 1) {
+        if (npcs.length < 1) {
             return nil();
         }
         final int NpcIndex = Random.nextInt(0, npcs.length);
@@ -104,7 +105,7 @@ public class Npcs extends ReflWrapper {
         return getNext(new Filter<NPC>() {
             @Override
             public boolean accept(NPC npc) {
-                return npc.isValid() && npc.getName() != null && Utilities.inArray(npc.getName(), names);
+                return npc.getName() != null && Utilities.inArray(npc.getName(), names);
             }
         });
     }
@@ -113,7 +114,7 @@ public class Npcs extends ReflWrapper {
         return getNext(new Filter<NPC>() {
             @Override
             public boolean accept(NPC npc) {
-                return npc.isValid() && Utilities.inArray(npc.getId(), ids);
+                return Utilities.inArray(npc.getId(), ids);
             }
         });
     }
@@ -121,8 +122,8 @@ public class Npcs extends ReflWrapper {
     public static NPC getNearbyBanker() {
         NPC current = null;
         for (NPC n : Npcs.getAll()) {
-            if (Game.isLoggedIn() && n != null && n.isValid() && n.getLocation().distanceTo() < 15) {
-                if (n.hasAction("Bank") && (current == null || current.getLocation().distanceTo() > Players.getLocal()
+            if (Game.isLoggedIn() && n != null && n.getLocation().distanceTo() < 15) {
+                if (n.hasAction("Bank") && (current == null || current.getLocation().distanceTo() > Players.getMyPlayer()
                         .distanceTo(n.getLocation()))) {
                     current = n;
                 }

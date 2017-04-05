@@ -2,7 +2,7 @@ package org.ethan.oss.api.wrappers;
 
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.ethan.oss.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Menu;
@@ -203,7 +203,7 @@ public class Tile implements Locatable, Interactable {
     }
 
     public boolean canReach() {
-        return canReach(Players.getLocal().getLocation());
+        return canReach(Players.getMyPlayer().getLocation());
     }
 
     public boolean isOnMap() {

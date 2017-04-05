@@ -1,6 +1,6 @@
 package org.ethan.oss.api.pathing;
 
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.api.wrappers.Tile;
@@ -24,7 +24,7 @@ public class LocalPath extends Path {
     }
 
     public LocalPath(Tile end) {
-        this(Players.getLocal().getLocation(), end);
+        this(Players.getMyPlayer().getLocation(), end);
     }
 
     private static double heuristic(final Node start, final Node end) {

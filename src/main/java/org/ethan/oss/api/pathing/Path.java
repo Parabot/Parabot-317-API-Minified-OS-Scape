@@ -1,6 +1,6 @@
 package org.ethan.oss.api.pathing;
 
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.ethan.oss.api.methods.Calculations;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.api.wrappers.Tile;
@@ -27,7 +27,7 @@ public abstract class Path {
         final Tile endTile = tiles[tiles.length - 1];
 
         if (next.equals(endTile)) {
-            if (Calculations.distanceTo(next) <= 1 || (end && Players.getLocal().isMoving())) {
+            if (Calculations.distanceTo(next) <= 1 || (end && Players.getMyPlayer().isMoving())) {
                 return false;
             }
             end = true;
@@ -35,7 +35,7 @@ public abstract class Path {
             end = false;
         }
         Walking.walkTo(next, useRun);
-        for (int i = 0; i < 10 && Players.getLocal().isMoving(); i++, Condition.sleep(Random.nextInt(150, 200))) {
+        for (int i = 0; i < 10 && Players.getMyPlayer().isMoving(); i++, Condition.sleep(Random.nextInt(150, 200))) {
             ;
         }
         return true;

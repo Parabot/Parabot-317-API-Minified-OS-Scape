@@ -464,7 +464,6 @@ public class Bank {
         //GameObject o = GameObjects.getNearbyBank();
         NPC n = Npcs.getNearbyBanker();
         if (!Bank.isOpen()) {
-            if (n.isValid()) {
                 n.interact("Bank");
                 Condition.wait(new Condition.Check() {
                     public boolean poll() {
@@ -472,7 +471,6 @@ public class Bank {
                     }
                 }, 100, 20);
                 return true;
-            }
         }
 
         return false;

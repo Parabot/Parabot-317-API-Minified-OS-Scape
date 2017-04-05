@@ -1,7 +1,7 @@
 package org.ethan.oss.api.methods;
 
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.wrappers.Actor;
+import org.parabot.osscape.api.wrapper.Character;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
@@ -103,7 +103,7 @@ public class Menu extends ReflWrapper {
         return rectangle;
     }
 
-    public static int index(Actor n, String action) {
+    public static int index(Character n, String action) {
         return index(action, n.getName());
     }
 
@@ -111,7 +111,7 @@ public class Menu extends ReflWrapper {
         return index(action, option) != -1;
     }
 
-    public static boolean contains(String action, Actor option) {
+    public static boolean contains(String action, Character option) {
         return index(action, option.getName()) != -1;
     }
 

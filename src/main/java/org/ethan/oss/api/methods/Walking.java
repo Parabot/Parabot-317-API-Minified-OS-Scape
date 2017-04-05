@@ -2,7 +2,7 @@ package org.ethan.oss.api.methods;
 
 import org.ethan.oss.api.input.Keyboard;
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.interactive.Players;
+import org.parabot.osscape.api.methods.Players;
 import org.ethan.oss.api.pathfinder.Path;
 import org.ethan.oss.api.pathfinder.impl.RSRegionPathFinder;
 import org.ethan.oss.api.wrappers.Tile;
@@ -25,7 +25,7 @@ public class Walking extends ReflWrapper {
         return new StatePredicate() {
             @Override
             public boolean apply() {
-                return Players.getLocal().isMoving();
+                return Players.getMyPlayer().isMoving();
             }
         };
     }
@@ -34,8 +34,8 @@ public class Walking extends ReflWrapper {
         return new StatePredicate() {
             @Override
             public boolean apply() {
-                return Players.getLocal().isMoving()
-                        && Calculations.distanceBetween(tile, Players.getLocal().getLocation()) > distance;
+                return Players.getMyPlayer().isMoving()
+                        && Calculations.distanceBetween(tile, Players.getMyPlayer().getLocation()) > distance;
             }
         };
     }
@@ -67,7 +67,7 @@ public class Walking extends ReflWrapper {
 
     public static Tile getClosestTileOnMap(Tile current) {
         if (!current.isOnMap()) {
-            Tile loc  = Players.getLocal().getLocation();
+            Tile loc  = Players.getMyPlayer().getLocation();
             Tile walk = new Tile((loc.getX() + current.getX()) / 2, (loc.getY() + current.getY()) / 2);
             return walk.isOnMap() ? walk : getClosestTileOnMap(walk);
         }
@@ -82,13 +82,13 @@ public class Walking extends ReflWrapper {
             Mouse.click(true);
             Keyboard.release(KeyEvent.VK_CONTROL);
             Utilities.sleepUntil(WALKING(), 600);
-            if (Players.getLocal().isMoving()) {
+            if (Players.getMyPlayer().isMoving()) {
                 Utilities.sleepWhile(WALKING(tile, 3), 7500);
                 return true;
             }
         } else {
             System.out.println("Tile is off screen " + tile);
-            System.out.println("Current position " + Players.getLocal().getLocation());
+            System.out.println("Current position " + Players.getMyPlayer().getLocation());
         }
         return false;
     }
@@ -100,7 +100,7 @@ public class Walking extends ReflWrapper {
         }
 
         int attemptsMade = 0;
-        while (Calculations.distanceBetween(Players.getLocal().getLocation(), target) > 3 && attemptsMade < 10
+        while (Calculations.distanceBetween(Players.getMyPlayer().getLocation(), target) > 3 && attemptsMade < 10
                 && !Thread.currentThread().isInterrupted()) {
             Tile next = nextTile(path, 10);
             if (next != null) {
@@ -118,7 +118,7 @@ public class Walking extends ReflWrapper {
     }
 
     public static Tile nextTile(Tile[] path, int maxDist) {
-        Tile cur = Players.getLocal().getLocation();
+        Tile cur = Players.getMyPlayer().getLocation();
         for (int i = path.length - 1; i >= 0; i--) {
             if (Calculations.distanceBetween(cur, path[i]) <= maxDist
                     && Calculations.distanceBetween(cur, path[path.length - 1]) > 3) {
