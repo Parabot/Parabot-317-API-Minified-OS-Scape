@@ -69,6 +69,39 @@ public class Game {
         return getSettings().get(301) == 1;
     }
 
+    public static int getMenuX(){
+        return accessor.getMenuX();
+    }
+
+    public static int getMenuY(){
+        return accessor.getMenuY();
+    }
+
+    public static int getMenuWidth(){
+        return accessor.getMenuWidth();
+    }
+
+    public static int getMenuHeight(){
+        return accessor.getMenuHeight();
+    }
+
+    public static int getMenuCount(){
+        return accessor.getMenuCount();
+    }
+
+    public static boolean isMenuOpen(){
+        return accessor.getIsMenuOpen();
+    }
+
+    public static String[] getMenuActions(){
+        return accessor.getMenuActions();
+    }
+
+
+    public static String[] getMenuOptions(){
+        return accessor.getMenuOptions();
+    }
+
     public static int getSpecialAttackPercent() {
         if (getSettings().get(300) > 0) {
             return getSettings().get(300) / 10;

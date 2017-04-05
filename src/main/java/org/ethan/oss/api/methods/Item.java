@@ -11,6 +11,7 @@ import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 
 import java.awt.*;
+import java.awt.Menu;
 
 public class Item implements Identifiable, Nameable, Interactable {
     private int            index;
@@ -62,7 +63,7 @@ public class Item implements Identifiable, Nameable, Interactable {
     public boolean interact(String action, String option) {
         int menuIndex = -1;
         for (int i = 0; i < 5; i++) {
-            menuIndex = Menu.index(action, option);
+            menuIndex = org.parabot.osscape.api.methods.Menu.index(action, option);
             Point interactPoint = getInteractPoint();
             if (interactPoint == null) {
                 return false;
@@ -70,13 +71,13 @@ public class Item implements Identifiable, Nameable, Interactable {
             if (menuIndex > -1 && getArea().contains(Mouse.getLocation())) {
                 break;
             }
-            if (Menu.isOpen() && menuIndex == -1) {
-                Menu.interact("Cancel");
+            if (org.parabot.osscape.api.methods.Menu.isOpen() && menuIndex == -1) {
+                org.parabot.osscape.api.methods.Menu.interact("Cancel");
             }
             Mouse.move(interactPoint);
             Condition.sleep(Random.nextInt(100, 150));
         }
-        return menuIndex > -1 && Menu.interact(action, option);
+        return menuIndex > -1 && org.parabot.osscape.api.methods.Menu.interact(action, option);
     }
 
     @Override
@@ -93,8 +94,8 @@ public class Item implements Identifiable, Nameable, Interactable {
                 }
             }, 100, 20);
         }
-        if (Menu.isOpen() && !Menu.contains(action, this.getName())) {
-            Menu.interact("Cancel");
+        if (org.parabot.osscape.api.methods.Menu.isOpen() && !org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
+            org.parabot.osscape.api.methods.Menu.interact("Cancel");
         }
 
         Point ip = null;
@@ -102,20 +103,20 @@ public class Item implements Identifiable, Nameable, Interactable {
             ip = this.getInteractPoint();
         }
 
-        if (Mouse.getLocation().distance(ip) <= 5 && !Menu.contains(action, this.getName())) {
+        if (Mouse.getLocation().distance(ip) <= 5 && !org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
             ip = this.getInteractPoint();
             Mouse.move(ip);
         } else {
-            if (!Menu.contains(action, this.getName())) {
+            if (!org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
                 Mouse.move(ip);
             }
         }
 
         if (this.isValid()) {
-            if (!Menu.isOpen() && Menu.contains(action, this.getName())) {
-                int index = Menu.index(action, this.getName());
+            if (!org.parabot.osscape.api.methods.Menu.isOpen() && org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
+                int index = org.parabot.osscape.api.methods.Menu.index(action, this.getName());
                 if (index == 0) {
-                    if (Menu.contains(action, this.getName())) {
+                    if (org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
                         Condition.sleep(Random.nextInt(20, 100));
                         Mouse.click(true);
                         return true;
@@ -124,19 +125,19 @@ public class Item implements Identifiable, Nameable, Interactable {
                     Mouse.click(false);
                     Condition.wait(new Condition.Check() {
                         public boolean poll() {
-                            return Menu.isOpen();
+                            return org.parabot.osscape.api.methods.Menu.isOpen();
                         }
                     }, 100, 20);
                 }
             }
 
-            if (Menu.isOpen() && Menu.contains(action, this.getName())) {
-                Menu.interact(action, this.getName());
-            } else if (Menu.isOpen() && !Menu.contains(action, this.getName())) {
-                Menu.interact("Cancel");
+            if (org.parabot.osscape.api.methods.Menu.isOpen() && org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
+                org.parabot.osscape.api.methods.Menu.interact(action, this.getName());
+            } else if (org.parabot.osscape.api.methods.Menu.isOpen() && !org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
+                org.parabot.osscape.api.methods.Menu.interact("Cancel");
                 Condition.wait(new Condition.Check() {
                     public boolean poll() {
-                        return !Menu.isOpen();
+                        return !org.parabot.osscape.api.methods.Menu.isOpen();
                     }
                 }, 100, 20);
             }

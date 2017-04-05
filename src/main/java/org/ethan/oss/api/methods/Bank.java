@@ -290,20 +290,20 @@ public class Bank {
             amount = a;
         }
 
-        if (!Menu.isOpen()) {
+        if (!org.parabot.osscape.api.methods.Menu.isOpen()) {
             Mouse.move(item.getInteractPoint());
-        } else if (Menu.isOpen() && !Menu.contains("Withdraw-" + amount)) {
-            Menu.interact("Cancel");
+        } else if (org.parabot.osscape.api.methods.Menu.isOpen() && !org.parabot.osscape.api.methods.Menu.contains("Withdraw-" + amount)) {
+            org.parabot.osscape.api.methods.Menu.interact("Cancel");
             Condition.wait(new Condition.Check() {
                 public boolean poll() {
-                    return !Menu.isOpen();
+                    return !org.parabot.osscape.api.methods.Menu.isOpen();
                 }
             }, 100, 20);
             Mouse.move(item.getInteractPoint());
         }
 
         if (amount == 0 || (amount == a && item.interact("Deposit-All"))
-                || (Menu.contains("Deposit-" + amount) && item.interact("Deposit-" + amount))) {
+                || (org.parabot.osscape.api.methods.Menu.contains("Deposit-" + amount) && item.interact("Deposit-" + amount))) {
             return true;
         }
 
@@ -345,25 +345,25 @@ public class Bank {
             int rnd = new java.util.Random().nextInt(choices.length);
             choice = choices[rnd];
         }
-        if (!Menu.isOpen()) {
+        if (!org.parabot.osscape.api.methods.Menu.isOpen()) {
             Mouse.move(item.getInteractPoint());
-        } else if (Menu.isOpen() && !Menu.contains("Withdraw-" + amount)) {
-            Menu.interact("Cancel");
+        } else if (org.parabot.osscape.api.methods.Menu.isOpen() && !org.parabot.osscape.api.methods.Menu.contains("Withdraw-" + amount)) {
+            org.parabot.osscape.api.methods.Menu.interact("Cancel");
             Condition.wait(new Condition.Check() {
                 public boolean poll() {
-                    return !Menu.isOpen();
+                    return !org.parabot.osscape.api.methods.Menu.isOpen();
                 }
             }, 100, 20);
             Mouse.move(item.getInteractPoint());
         }
 
         if (a == amount ? item.interact("Withdraw-" + choice)
-                : (Menu.contains("Withdraw-" + amount) ? !item.interact("Withdraw-" + amount)
+                : (org.parabot.osscape.api.methods.Menu.contains("Withdraw-" + amount) ? !item.interact("Withdraw-" + amount)
                 : !item.interact("Withdraw-X"))) {
             return false;
         }
 
-        if (a != amount && !Menu.contains("Withdraw-" + amount)) {
+        if (a != amount && !org.parabot.osscape.api.methods.Menu.contains("Withdraw-" + amount)) {
             Condition.wait(new Condition.Check() {
                 public boolean poll() {
                     return Widgets.canEnterAmount();

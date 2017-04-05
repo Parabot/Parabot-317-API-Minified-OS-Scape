@@ -1,41 +1,41 @@
-package org.ethan.oss.api.methods;
+package org.parabot.osscape.api.methods;
 
 import org.ethan.oss.api.input.Mouse;
-import org.parabot.osscape.api.wrapper.Character;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
+import org.parabot.osscape.api.wrapper.Character;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class Menu extends ReflWrapper {
+public class Menu {
 
     private static final Pattern htmlTags = Pattern.compile("\\<.+?\\>");
 
     public static int getX() {
-        return (int) getFieldValue("MenuX", null);
+        return Game.getMenuX();
     }
 
     public static int getY() {
-        return (int) getFieldValue("MenuY", null);
+        return Game.getMenuY();
     }
 
     public static int getWidth() {
-        return (int) getFieldValue("MenuWidth", null);
+        return Game.getMenuWidth();
     }
 
     public static int getHeight() {
-        return (int) getFieldValue("MenuHeight", null);
+        return Game.getMenuHeight();
     }
 
     public static int getMenuSize() {
-        return (int) getFieldValue("MenuCount", null);
+        return Game.getMenuCount();
     }
 
     public static boolean isOpen() {
-        return (Boolean) getFieldValue("IsMenuOpen", null);
+        return Game.isMenuOpen();
     }
 
     public static Rectangle getArea() {
@@ -44,7 +44,7 @@ public class Menu extends ReflWrapper {
 
     public static java.util.List<String> getActions() {
         ArrayList<String> actions     = new ArrayList<>();
-        String[]          menuActions = (String[]) getFieldValue("MenuActions", null);
+        String[]          menuActions = Game.getMenuActions();
 
         for (int i = Menu.getMenuSize() - 1; i >= 0; i--) {
             if (menuActions[i] != null) {
@@ -56,7 +56,7 @@ public class Menu extends ReflWrapper {
 
     public static java.util.List<String> getOptions() {
         ArrayList<String> options     = new ArrayList<>();
-        String[]          menuOptions = (String[]) getFieldValue("MenuOptions", null);
+        String[]          menuOptions = Game.getMenuOptions();
         for (int i = Menu.getMenuSize() - 1; i >= 0; i--) {
             if (menuOptions[i] != null) {
                 options.add(htmlTags.matcher(menuOptions[i]).replaceAll(""));

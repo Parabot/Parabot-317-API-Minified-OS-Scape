@@ -47,6 +47,7 @@ public interface Client {
     int getCameraScale();
 
     int getMenuHeight();
+    int getMenuWidth();
 
     int getMenuX();
 

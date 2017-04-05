@@ -193,11 +193,11 @@ public abstract class Character implements Locatable, Interactable {
                     Condition.sleep(75);
                 }
 
-                if (!org.ethan.oss.api.methods.Menu.isOpen() && org.ethan.oss.api.methods.Menu.contains(action, this.getName())) {
+                if (!org.parabot.osscape.api.methods.Menu.isOpen() && org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
 
-                    int index = org.ethan.oss.api.methods.Menu.index(action, this.getName());
+                    int index = org.parabot.osscape.api.methods.Menu.index(action, this.getName());
                     if (index == 0) {
-                        if (org.ethan.oss.api.methods.Menu.contains(action, this.getName())) {
+                        if (org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
                             Condition.sleep(Random.nextInt(80, 150));
                             Mouse.click(true);
                             return true;
@@ -206,14 +206,14 @@ public abstract class Character implements Locatable, Interactable {
                         Mouse.click(false);
                         Condition.wait(new Condition.Check() {
                             public boolean poll() {
-                                return org.ethan.oss.api.methods.Menu.isOpen();
+                                return org.parabot.osscape.api.methods.Menu.isOpen();
                             }
                         }, 100, 20);
                     }
                 }
-                if (org.ethan.oss.api.methods.Menu.isOpen() && org.ethan.oss.api.methods.Menu.contains(action, this.getName())) {
-                    int   index = org.ethan.oss.api.methods.Menu.index(action, this.getName());
-                    Point p     = org.ethan.oss.api.methods.Menu.getSuitablePoint(index);
+                if (org.parabot.osscape.api.methods.Menu.isOpen() && org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
+                    int   index = org.parabot.osscape.api.methods.Menu.index(action, this.getName());
+                    Point p     = org.parabot.osscape.api.methods.Menu.getSuitablePoint(index);
                     if (p.x > 5 && p.y > 5) {
                         Mouse.move(p.x, p.y);
                     }
@@ -222,9 +222,9 @@ public abstract class Character implements Locatable, Interactable {
                         Mouse.click(true);
                         return true;
                     }
-                } else if (org.ethan.oss.api.methods.Menu.isOpen() && !org.ethan.oss.api.methods.Menu.contains(action, this.getName())) {
-                    int   index = org.ethan.oss.api.methods.Menu.index("Cancel");
-                    Point p     = org.ethan.oss.api.methods.Menu.getSuitablePoint(index);
+                } else if (org.parabot.osscape.api.methods.Menu.isOpen() && !org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
+                    int   index = org.parabot.osscape.api.methods.Menu.index("Cancel");
+                    Point p     = org.parabot.osscape.api.methods.Menu.getSuitablePoint(index);
                     if (p.x > 5 && p.y > 5) {
                         Mouse.move(p.x, p.y);
                     }
