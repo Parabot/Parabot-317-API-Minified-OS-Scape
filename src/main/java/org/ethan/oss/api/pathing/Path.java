@@ -1,11 +1,11 @@
 package org.ethan.oss.api.pathing;
 
 import org.ethan.oss.api.methods.Walking;
-import org.parabot.osscape.api.wrapper.Tile;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.Tile;
 
 public abstract class Path {
 

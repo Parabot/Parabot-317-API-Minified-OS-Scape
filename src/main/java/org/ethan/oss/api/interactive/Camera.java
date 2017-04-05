@@ -1,13 +1,13 @@
 package org.ethan.oss.api.interactive;
 
 import org.ethan.oss.api.input.Keyboard;
-import org.parabot.osscape.api.wrapper.Tile;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.wrapper.Player;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.awt.event.KeyEvent;
 

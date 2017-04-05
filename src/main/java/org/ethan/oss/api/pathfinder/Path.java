@@ -1,7 +1,7 @@
 package org.ethan.oss.api.pathfinder;
 
-import org.parabot.osscape.api.wrapper.Tile;
 import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.awt.*;
 import java.util.ArrayList;

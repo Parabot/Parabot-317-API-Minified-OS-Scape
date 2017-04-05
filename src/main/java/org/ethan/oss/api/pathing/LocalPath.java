@@ -1,9 +1,9 @@
 package org.ethan.oss.api.pathing;
 
 import org.ethan.oss.api.methods.Walking;
-import org.parabot.osscape.api.wrapper.Tile;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.util.HashSet;
 import java.util.LinkedList;

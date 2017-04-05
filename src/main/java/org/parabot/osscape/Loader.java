@@ -31,8 +31,8 @@ import java.net.URL;
  */
 @ServerManifest(author = "Ethan, Everel & JKetelaar", name = "OS-Scape", type = Type.INJECTION, version = 0.1)
 public class Loader extends ServerProvider {
-    private static Client client = null;
-    private boolean extended = true;
+    private static Client  client   = null;
+    private        boolean extended = true;
 
     public static Client getClient() {
         if (client == null) {
