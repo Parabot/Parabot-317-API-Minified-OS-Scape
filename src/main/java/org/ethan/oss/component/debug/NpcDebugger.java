@@ -1,20 +1,20 @@
 package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.interactive.Npcs;
 import org.parabot.osscape.api.methods.Game;
-import org.ethan.oss.api.wrappers.NPC;
 import org.parabot.environment.api.utils.Filter;
+import org.parabot.osscape.api.methods.Npcs;
+import org.parabot.osscape.api.wrapper.Npc;
 
 import java.awt.*;
 
-public class NpcDebugger extends Debugger<NPC> {
+public class NpcDebugger extends Debugger<Npc> {
 
     @Override
-    public NPC[] elements() {
-        return Npcs.getAll(new Filter<NPC>() {
+    public Npc[] elements() {
+        return Npcs.getNearest(new Filter<Npc>() {
             @Override
-            public boolean accept(NPC n) {
+            public boolean accept(Npc n) {
                 return n.distanceTo() < 7;
             }
         });
@@ -29,7 +29,7 @@ public class NpcDebugger extends Debugger<NPC> {
     public void render(Graphics2D graphics) {
         final FontMetrics metrics = graphics.getFontMetrics();
 
-        for (NPC n : refresh()) {
+        for (Npc n : refresh()) {
             if (n != null) {
 
                 Point point = n.getPointOnScreen();
@@ -37,7 +37,7 @@ public class NpcDebugger extends Debugger<NPC> {
                 graphics.setColor(Color.BLUE);
                 graphics.fillRect((int) point.x, (int) point.y, 5, 5);
                 graphics.setColor(Color.black);
-                String name = "[" + n.getName() + " - " + n.getId() + "] - " + n.getLocation();
+                String name = "[" + n.getName() + " - " + n.getDef().getId() + "] - " + n.getLocation();
                 graphics.drawString(name, point.x - (metrics.stringWidth(name) / 2), point.y - 5);
                 n.getLocation().draw(graphics, Color.orange);
 

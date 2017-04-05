@@ -1,5 +1,6 @@
 package org.parabot.osscape.api.wrapper;
 
+
 /**
  * @author JKetelaar
  */
@@ -15,6 +16,10 @@ public class Npc extends Character {
     @Override
     public String getName() {
         return accessor.getNpcDef().getNpcName();
+    }
+
+    public NpcDef getDef(){
+        return new NpcDef(accessor.getNpcDef());
     }
 
     @Override

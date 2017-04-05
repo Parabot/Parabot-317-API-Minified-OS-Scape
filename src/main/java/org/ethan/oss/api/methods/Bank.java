@@ -2,15 +2,15 @@ package org.ethan.oss.api.methods;
 
 import org.ethan.oss.api.input.Keyboard;
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.interactive.Npcs;
 import org.ethan.oss.api.interactive.Widgets;
-import org.ethan.oss.api.wrappers.NPC;
 import org.ethan.oss.api.wrappers.WidgetChild;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
 import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Npcs;
+import org.parabot.osscape.api.wrapper.Npc;
 
 import java.util.ArrayList;
 
@@ -462,7 +462,7 @@ public class Bank {
 
     public static boolean open() {
         //GameObject o = GameObjects.getNearbyBank();
-        NPC n = Npcs.getNearbyBanker();
+        Npc n = Npcs.getNearbyBanker();
         if (!Bank.isOpen()) {
                 n.interact("Bank");
                 Condition.wait(new Condition.Check() {
