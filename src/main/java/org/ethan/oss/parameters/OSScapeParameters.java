@@ -13,12 +13,9 @@ public class OSScapeParameters {
 
     /**
      * Creates a new instance of the parameters class.
-     *
-     * @param worldId the world you wish to load into
      */
     public OSScapeParameters() {
         parse();
-
     }
 
     public void parse() {
