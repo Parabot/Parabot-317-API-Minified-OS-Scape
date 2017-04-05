@@ -1,7 +1,7 @@
 package org.ethan.oss.api.interactive;
 
 import org.ethan.oss.api.input.Keyboard;
-import org.ethan.oss.api.wrappers.Tile;
+import org.parabot.osscape.api.wrapper.Tile;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;

@@ -1,6 +1,6 @@
 package org.ethan.oss;
 
-import org.ethan.oss.api.wrappers.Tile;
+import org.parabot.osscape.api.wrapper.Tile;
 
 public class Constants {
     public static final int[]    WORLDS         = { 301, 302, 303, 304, 305, 306, 308, 309, 310,

@@ -1,7 +1,7 @@
 package org.ethan.oss.api.input;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.wrappers.Tile;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.awt.*;
 

@@ -16,6 +16,7 @@ import org.parabot.osscape.api.interfaces.Nameable;
 import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Menu;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.awt.*;
 

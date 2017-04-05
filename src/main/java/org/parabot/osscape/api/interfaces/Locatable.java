@@ -1,6 +1,6 @@
 package org.parabot.osscape.api.interfaces;
 
-import org.ethan.oss.api.wrappers.Tile;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.awt.*;
 

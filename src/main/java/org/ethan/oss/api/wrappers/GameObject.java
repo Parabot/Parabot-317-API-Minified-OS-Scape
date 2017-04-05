@@ -17,6 +17,7 @@ import org.parabot.osscape.api.interfaces.Nameable;
 import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Menu;
+import org.parabot.osscape.api.wrapper.Tile;
 
 import java.awt.*;
 
@@ -71,7 +72,7 @@ public class GameObject extends ReflWrapper implements Identifiable, Nameable, L
     }
 
     public Point point(int paramInt) {
-        return Calculations.worldToCanvas(paramInt, tile.x, tile.y);
+        return Calculations.worldToCanvas(paramInt, tile.getX(), tile.getY());
     }
 
     public Tile getLocation() {
@@ -296,7 +297,7 @@ public class GameObject extends ReflWrapper implements Identifiable, Nameable, L
                 gridY = (int) getFieldValue("getBoundryLocalY", raw);
             }
 
-            int tileByte = Walking.getTileFlags()[Game.getPlane()][getLocation().x - Game.getBaseX()][getLocation().y
+            int tileByte = Walking.getTileFlags()[Game.getPlane()][getLocation().getX() - Game.getBaseX()][getLocation().getY()
                     - Game.getBaseY()];
             if (isValid() && getName() != null && getName().toLowerCase().contains("fishing")) {
                 tileByte = 0;

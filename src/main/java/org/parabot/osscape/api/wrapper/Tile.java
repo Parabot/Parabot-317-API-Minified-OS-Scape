@@ -1,4 +1,4 @@
-package org.ethan.oss.api.wrappers;
+package org.parabot.osscape.api.wrapper;
 
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
@@ -17,9 +17,9 @@ import org.parabot.osscape.api.methods.Players;
 import java.awt.*;
 
 public class Tile implements Locatable, Interactable {
-    int x;
-    int y;
-    int z;
+    private int x;
+    private int y;
+    private int z;
 
     public Tile(int x, int y, int z) {
         this.x = x;
@@ -198,7 +198,7 @@ public class Tile implements Locatable, Interactable {
     }
 
     public boolean canReach(Tile loc) {
-        return dijkstraDist(loc.x - Game.getBaseX(), loc.y - Game.getBaseY(), x - Game.getBaseX(), y - Game.getBaseY(),
+        return Calculations.dijkstraDist(loc.x - Game.getBaseX(), loc.y - Game.getBaseY(), x - Game.getBaseX(), y - Game.getBaseY(),
                 true) != -1;
     }
 
@@ -226,132 +226,5 @@ public class Tile implements Locatable, Interactable {
         int[][] flags = Walking.getCollisionFlags(Game.getPlane());
         int     value = flags[(getX() - Game.getBaseX())][(getY() - Game.getBaseY())];
         return (value & 0x1280180) == 0 ^ (value & 0x1280180) == 128;
-    }
-
-    private int dijkstraDist(final int startX, final int startY, final int destX, final int destY,
-                             final boolean isObject) {
-        final int[][] prev   = new int[104][104];
-        final int[][] dist   = new int[104][104];
-        final int[]   path_x = new int[4000];
-        final int[]   path_y = new int[4000];
-
-        for (int xx = 0; xx < 104; xx++) {
-            for (int yy = 0; yy < 104; yy++) {
-                prev[xx][yy] = 0;
-                dist[xx][yy] = 99999999;
-            }
-        }
-
-        int curr_x = startX;
-        int curr_y = startY;
-        prev[startX][startY] = 99;
-        dist[startX][startY] = 0;
-        int path_ptr = 0;
-        int step_ptr = 0;
-        path_x[path_ptr] = startX;
-        path_y[path_ptr++] = startY;
-        final int blocks[][] = Walking.getCollisionFlags(Game.getPlane());
-        final int pathLength = path_x.length;
-        boolean   foundPath  = false;
-        while (step_ptr != path_ptr) {
-            curr_x = path_x[step_ptr];
-            curr_y = path_y[step_ptr];
-
-            if (isObject) {
-                if (((curr_x == destX) && (curr_y == destY + 1)) || ((curr_x == destX) && (curr_y == destY - 1))
-                        || ((curr_x == destX + 1) && (curr_y == destY))
-                        || ((curr_x == destX - 1) && (curr_y == destY))) {
-                    foundPath = true;
-                    break;
-                }
-            } else if ((curr_x == destX) && (curr_y == destY)) {
-                foundPath = true;
-            }
-
-            step_ptr = (step_ptr + 1) % pathLength;
-            final int cost = dist[curr_x][curr_y] + 1;
-
-            if ((curr_y > 0) && (prev[curr_x][curr_y - 1] == 0) && ((blocks[curr_x][curr_y - 1] & 0x1280102) == 0)) {
-                path_x[path_ptr] = curr_x;
-                path_y[path_ptr] = curr_y - 1;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x][curr_y - 1] = 1;
-                dist[curr_x][curr_y - 1] = cost;
-            }
-
-            if ((curr_x > 0) && (prev[curr_x - 1][curr_y] == 0) && ((blocks[curr_x - 1][curr_y] & 0x1280108) == 0)) {
-                path_x[path_ptr] = curr_x - 1;
-                path_y[path_ptr] = curr_y;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x - 1][curr_y] = 2;
-                dist[curr_x - 1][curr_y] = cost;
-            }
-
-            if ((curr_y < 104 - 1) && (prev[curr_x][curr_y + 1] == 0)
-                    && ((blocks[curr_x][curr_y + 1] & 0x1280120) == 0)) {
-                path_x[path_ptr] = curr_x;
-                path_y[path_ptr] = curr_y + 1;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x][curr_y + 1] = 4;
-                dist[curr_x][curr_y + 1] = cost;
-            }
-
-            if ((curr_x < 104 - 1) && (prev[curr_x + 1][curr_y] == 0)
-                    && ((blocks[curr_x + 1][curr_y] & 0x1280180) == 0)) {
-                path_x[path_ptr] = curr_x + 1;
-                path_y[path_ptr] = curr_y;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x + 1][curr_y] = 8;
-                dist[curr_x + 1][curr_y] = cost;
-            }
-
-            if ((curr_x > 0) && (curr_y > 0) && (prev[curr_x - 1][curr_y - 1] == 0)
-                    && ((blocks[curr_x - 1][curr_y - 1] & 0x128010e) == 0)
-                    && ((blocks[curr_x - 1][curr_y] & 0x1280108) == 0)
-                    && ((blocks[curr_x][curr_y - 1] & 0x1280102) == 0)) {
-                path_x[path_ptr] = curr_x - 1;
-                path_y[path_ptr] = curr_y - 1;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x - 1][curr_y - 1] = 3;
-                dist[curr_x - 1][curr_y - 1] = cost;
-            }
-
-            if ((curr_x > 0) && (curr_y < 104 - 1) && (prev[curr_x - 1][curr_y + 1] == 0)
-                    && ((blocks[curr_x - 1][curr_y + 1] & 0x1280138) == 0)
-                    && ((blocks[curr_x - 1][curr_y] & 0x1280108) == 0)
-                    && ((blocks[curr_x][curr_y + 1] & 0x1280120) == 0)) {
-                path_x[path_ptr] = curr_x - 1;
-                path_y[path_ptr] = curr_y + 1;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x - 1][curr_y + 1] = 6;
-                dist[curr_x - 1][curr_y + 1] = cost;
-            }
-
-            if ((curr_x < 104 - 1) && (curr_y > 0) && (prev[curr_x + 1][curr_y - 1] == 0)
-                    && ((blocks[curr_x + 1][curr_y - 1] & 0x1280183) == 0)
-                    && ((blocks[curr_x + 1][curr_y] & 0x1280180) == 0)
-                    && ((blocks[curr_x][curr_y - 1] & 0x1280102) == 0)) {
-                path_x[path_ptr] = curr_x + 1;
-                path_y[path_ptr] = curr_y - 1;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x + 1][curr_y - 1] = 9;
-                dist[curr_x + 1][curr_y - 1] = cost;
-            }
-
-            if ((curr_x < 104 - 1) && (curr_y < 104 - 1) && (prev[curr_x + 1][curr_y + 1] == 0)
-                    && ((blocks[curr_x + 1][curr_y + 1] & 0x12801e0) == 0)
-                    && ((blocks[curr_x + 1][curr_y] & 0x1280180) == 0)
-                    && ((blocks[curr_x][curr_y + 1] & 0x1280120) == 0)) {
-                path_x[path_ptr] = curr_x + 1;
-                path_y[path_ptr] = curr_y + 1;
-                path_ptr = (path_ptr + 1) % pathLength;
-                prev[curr_x + 1][curr_y + 1] = 12;
-                dist[curr_x + 1][curr_y + 1] = cost;
-            }
-        }
-        if (foundPath) {
-            return dist[curr_x][curr_y];
-        }
-        return -1;
     }
 }

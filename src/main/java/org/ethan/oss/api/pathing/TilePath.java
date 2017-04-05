@@ -1,6 +1,6 @@
 package org.ethan.oss.api.pathing;
 
-import org.ethan.oss.api.wrappers.Tile;
+import org.parabot.osscape.api.wrapper.Tile;
 
 public class TilePath extends Path {
 
