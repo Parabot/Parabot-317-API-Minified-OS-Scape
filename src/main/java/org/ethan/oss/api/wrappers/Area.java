@@ -1,6 +1,6 @@
 package org.ethan.oss.api.wrappers;
 
-import org.ethan.oss.interfaces.Locatable;
+import org.parabot.osscape.api.interfaces.Locatable;
 
 import java.awt.*;
 import java.util.ArrayList;

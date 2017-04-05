@@ -1,7 +1,7 @@
 package org.ethan.oss.api.pathing;
 
 import org.parabot.osscape.api.methods.Players;
-import org.ethan.oss.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Calculations;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.api.wrappers.Tile;
 import org.ethan.oss.utils.Condition;

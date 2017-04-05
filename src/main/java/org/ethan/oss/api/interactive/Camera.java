@@ -3,7 +3,7 @@ package org.ethan.oss.api.interactive;
 import org.ethan.oss.api.input.Keyboard;
 import org.parabot.osscape.api.wrapper.Player;
 import org.ethan.oss.api.wrappers.Tile;
-import org.ethan.oss.interfaces.Locatable;
+import org.parabot.osscape.api.interfaces.Locatable;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;

@@ -1,7 +1,7 @@
 package org.ethan.oss.api.input;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Calculations;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;

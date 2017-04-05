@@ -1,6 +1,6 @@
 package org.ethan.oss.api.wrappers;
 
-import org.ethan.oss.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.PolygonUtils;

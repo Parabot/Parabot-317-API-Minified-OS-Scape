@@ -4,7 +4,7 @@ import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.listeners.*;
 import org.ethan.oss.api.randoms.RandomEvent;
 import org.ethan.oss.api.randoms.RandomEventHandler;
-import org.ethan.oss.interfaces.PaintListener;
+import org.parabot.osscape.api.interfaces.PaintListener;
 import org.parabot.environment.scripts.Script;
 
 import java.util.ArrayList;

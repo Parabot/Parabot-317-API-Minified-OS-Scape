@@ -30,6 +30,38 @@ public class Game {
         return accessor.getEnergy();
     }
 
+    public static int getMapOffset(){
+        return accessor.getMapOffset();
+    }
+
+    public static int getMapScale(){
+        return accessor.getMapScale();
+    }
+
+    public static int getMapAngle(){
+        return accessor.getMapAngle();
+    }
+
+    public static int getCameraScale(){
+        return accessor.getCameraScale();
+    }
+
+    public static int getViewportWidth(){
+        return accessor.getViewportWidth();
+    }
+
+    public static int getViewportHeight(){
+        return accessor.getViewportHeight();
+    }
+
+    public static byte[][][] getTileSettings(){
+        return accessor.getTileSettings();
+    }
+
+    public static int[][][] getTileHeights(){
+        return accessor.getTileHeights();
+    }
+
     public static boolean isUsingSpecialAttack() {
         return Settings.get(301) == 1;
     }

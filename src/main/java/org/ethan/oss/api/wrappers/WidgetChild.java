@@ -3,7 +3,7 @@ package org.ethan.oss.api.wrappers;
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Widgets;
 import org.ethan.oss.api.methods.Menu;
-import org.ethan.oss.interfaces.Interactable;
+import org.parabot.osscape.api.interfaces.Interactable;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;

@@ -1,11 +1,11 @@
 package org.ethan.oss.utils;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.ethan.oss.component.debug.PlayerDebugger;
 import org.ethan.oss.hook.Hook;
-import org.ethan.oss.interfaces.StatePredicate;
+import org.parabot.osscape.api.interfaces.StatePredicate;
 import org.ethan.oss.parameters.OSScapeParameters;
 import org.parabot.api.io.Directories;
 import org.parabot.core.Context;
