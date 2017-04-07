@@ -2,8 +2,8 @@ package org.ethan.oss.api.methods;
 
 import org.ethan.oss.api.input.Keyboard;
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.pathfinder.Path;
-import org.ethan.oss.api.pathfinder.impl.RSRegionPathFinder;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.Path;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.impl.RSRegionPathFinder;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;

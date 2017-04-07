@@ -1,4 +1,4 @@
-package org.ethan.oss.api.pathfinder;
+package org.parabot.osscape.api.wrapper.walking.pathfinder;
 
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.wrapper.Tile;

@@ -1,7 +1,7 @@
-package org.ethan.oss.api.pathfinder;
+package org.parabot.osscape.api.wrapper.walking.pathfinder;
 
-import org.ethan.oss.api.pathfinder.impl.RSMapPathFinder;
-import org.ethan.oss.api.pathfinder.impl.RSRegion;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.impl.RSMapPathFinder;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.impl.RSRegion;
 
 import java.util.ArrayList;
 import java.util.HashMap;

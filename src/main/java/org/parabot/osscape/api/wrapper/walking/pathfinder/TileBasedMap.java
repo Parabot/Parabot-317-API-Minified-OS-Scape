@@ -1,4 +1,4 @@
-package org.ethan.oss.api.pathfinder;
+package org.parabot.osscape.api.wrapper.walking.pathfinder;
 
 /**
  * Created by IntelliJ IDEA.

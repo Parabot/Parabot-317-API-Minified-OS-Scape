@@ -1,6 +1,6 @@
-package org.ethan.oss.api.pathfinder.impl;
+package org.parabot.osscape.api.wrapper.walking.pathfinder.impl;
 
-import org.ethan.oss.api.pathfinder.TileBasedMap;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.TileBasedMap;
 
 public class RSRegion implements TileBasedMap {
 

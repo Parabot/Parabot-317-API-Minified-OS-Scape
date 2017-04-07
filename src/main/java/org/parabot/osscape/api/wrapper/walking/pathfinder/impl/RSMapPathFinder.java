@@ -1,10 +1,10 @@
-package org.ethan.oss.api.pathfinder.impl;
+package org.parabot.osscape.api.wrapper.walking.pathfinder.impl;
 
-import org.ethan.oss.api.pathfinder.AStarPathFinder;
-import org.ethan.oss.api.pathfinder.ClosestHeuristic;
-import org.ethan.oss.api.pathfinder.Path;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.AStarPathFinder;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.ClosestHeuristic;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.Path;
 
 import java.awt.*;
 
