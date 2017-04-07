@@ -4,7 +4,7 @@ import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.callbacks.ModelCallBack;
 import org.ethan.oss.api.definitions.ObjectDefinition;
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.interactive.Camera;
+import org.parabot.osscape.api.methods.Camera;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;

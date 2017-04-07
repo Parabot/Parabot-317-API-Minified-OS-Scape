@@ -2,7 +2,7 @@ package org.ethan.oss.api.wrappers;
 
 import org.ethan.oss.api.definitions.ItemDefinition;
 import org.ethan.oss.api.input.Mouse;
-import org.ethan.oss.api.interactive.Camera;
+import org.parabot.osscape.api.methods.Camera;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;

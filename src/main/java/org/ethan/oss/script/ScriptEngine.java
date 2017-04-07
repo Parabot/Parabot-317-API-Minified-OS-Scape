@@ -14,7 +14,6 @@ public class ScriptEngine {
     public static ScriptEngine INSTANCE = new ScriptEngine();
     public RandomEventHandler randomEventHandler;
     public Script script = null;
-    private ExperienceMonitor experienceMonitor;
     private InventoryMonitor  inventoryMonitor;
     private Thread            randomEventsThread;
     ;
@@ -52,7 +51,6 @@ public class ScriptEngine {
         clearMessageListeners();
         paintListener = null;
         this.inventoryMonitor = null;
-        this.experienceMonitor = null;
         this.script = null;
         this.randomEventsThread.interrupt();
         this.randomEventsThread = null;
@@ -71,11 +69,6 @@ public class ScriptEngine {
         }
         if (script instanceof MessageListener) {
             addMessageListener((MessageListener) script);
-        }
-        this.experienceMonitor = new ExperienceMonitor();
-        if (script instanceof ExperienceListener) {
-            experienceMonitor.addListener((ExperienceListener) script);
-            new Thread(experienceMonitor).start();
         }
 
         this.inventoryMonitor = new InventoryMonitor();

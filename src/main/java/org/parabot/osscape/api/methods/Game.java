@@ -107,6 +107,26 @@ public class Game {
         return accessor.getWidgetNodeCache();
     }
 
+    public static int getCameraPitch(){
+        return accessor.getCameraPitch();
+    }
+
+    public static int getCameraYaw(){
+        return accessor.getCameraYaw();
+    }
+
+    public static int getCameraX(){
+        return accessor.getCameraX();
+    }
+
+    public static int getCameraY(){
+        return accessor.getCameraY();
+    }
+
+    public static int getCameraZ(){
+        return accessor.getCameraZ();
+    }
+
     public static boolean isMenuOpen() {
         return accessor.getIsMenuOpen();
     }
