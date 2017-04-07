@@ -2,7 +2,6 @@ package org.ethan.oss;
 
 import org.ethan.oss.api.input.InternalKeyboard;
 import org.ethan.oss.api.input.InternalMouse;
-import org.ethan.oss.api.listeners.InventoryMonitor;
 import org.ethan.oss.arch.ArchiveClassLoader;
 import org.ethan.oss.component.RSCanvas;
 import org.ethan.oss.hook.FieldHook;
@@ -40,7 +39,6 @@ public class ServerEngine {
     private Applet           applet;
     private Map<String, FieldHook>  fieldMap  = null;
     private Map<String, MethodHook> methodMap = null;
-    private InventoryMonitor inventoryMonitor;
     private FileDownloader   downloader;
     private String       user                     = null;
     private String       pass                     = null;
@@ -185,14 +183,6 @@ public class ServerEngine {
 
     public void setDebugMouse(boolean debugMouse) {
         this.debugMouse = debugMouse;
-    }
-
-    public InventoryMonitor getInventoryMonitor() {
-        return inventoryMonitor;
-    }
-
-    public void setInventoryMonitor(InventoryMonitor inventoryMonitor) {
-        this.inventoryMonitor = inventoryMonitor;
     }
 
     public boolean isDebugNpcs() {

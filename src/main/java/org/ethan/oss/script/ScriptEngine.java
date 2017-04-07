@@ -14,9 +14,8 @@ public class ScriptEngine {
     public static ScriptEngine INSTANCE = new ScriptEngine();
     public RandomEventHandler randomEventHandler;
     public Script script = null;
-    private InventoryMonitor  inventoryMonitor;
     private Thread            randomEventsThread;
-    ;
+
     private List<MessageListener> messageListeners = new ArrayList<MessageListener>();
     private PaintListener paintListener;
     private boolean       scriptPaused;
@@ -50,7 +49,6 @@ public class ScriptEngine {
         ServerEngine.getInstance().getCanvas().getPaintListeners().remove(paintListener);
         clearMessageListeners();
         paintListener = null;
-        this.inventoryMonitor = null;
         this.script = null;
         this.randomEventsThread.interrupt();
         this.randomEventsThread = null;
@@ -69,12 +67,6 @@ public class ScriptEngine {
         }
         if (script instanceof MessageListener) {
             addMessageListener((MessageListener) script);
-        }
-
-        this.inventoryMonitor = new InventoryMonitor();
-        if (script instanceof InventoryListener) {
-            inventoryMonitor.addListener((InventoryListener) script);
-            new Thread(inventoryMonitor).start();
         }
 
         if (script instanceof PaintListener) {

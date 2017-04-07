@@ -1,6 +1,6 @@
 package org.ethan.oss.api.wrappers;
 
-import org.ethan.oss.api.definitions.ItemDefinition;
+import org.parabot.osscape.api.wrapper.ItemDefinition;
 import org.ethan.oss.api.input.Mouse;
 import org.parabot.osscape.api.methods.Camera;
 import org.parabot.osscape.api.wrapper.walking.Walking;
@@ -34,7 +34,8 @@ public class GroundItem extends ReflWrapper implements Locatable, Identifiable, 
             location = tile;
             id = (int) getFieldValue("ItemID", raw);
             amount = (int) getFieldValue("StackSizes", raw);
-            itemDefinition = new ItemDefinition(id);
+            // TODO: Still null accessor
+            itemDefinition = new ItemDefinition(null, id);
         } else {
             id = -1;
             amount = -1;
