@@ -7,6 +7,8 @@ public interface Client {
 
     int[][][] getTileHeights();
 
+    Widget[][] getWidgets();
+
     Player[] getLocalPlayers();
 
     Npc[] getLocalNpcs();
@@ -85,11 +87,11 @@ public interface Client {
 
     int getTick();
 
-    int getWidgetPositionY();
+    int[] getWidgetPositionY();
 
     int getWeight();
 
-    int getWidgetPositionX();
+    int[] getWidgetPositionX();
 
     int getCameraPitch();
 

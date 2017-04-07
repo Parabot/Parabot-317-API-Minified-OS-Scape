@@ -5,6 +5,8 @@ import org.ethan.oss.api.interactive.Widgets;
 import org.ethan.oss.api.wrappers.WidgetChild;
 import org.parabot.osscape.Loader;
 import org.parabot.osscape.accessors.Client;
+import org.parabot.osscape.accessors.Widget;
+import org.parabot.osscape.accessors.WidgetNode;
 
 /**
  * @author JKetelaar
@@ -12,6 +14,10 @@ import org.parabot.osscape.accessors.Client;
 public class Game {
 
     private static final Client accessor = Loader.getClient();
+
+    public static Widget[][] getWidgets(){
+        return accessor.getWidgets();
+    }
 
     public static int getBaseX() {
         return accessor.getBaseX();
@@ -87,6 +93,18 @@ public class Game {
 
     public static int getMenuCount() {
         return accessor.getMenuCount();
+    }
+
+    public static int[] getWidgetPositionX(){
+        return accessor.getWidgetPositionX();
+    }
+
+    public static int[] getWidgetPositionY(){
+        return accessor.getWidgetPositionY();
+    }
+
+    public static WidgetNode getWidgetNodeCache(){
+        return accessor.getWidgetNodeCache();
     }
 
     public static boolean isMenuOpen() {

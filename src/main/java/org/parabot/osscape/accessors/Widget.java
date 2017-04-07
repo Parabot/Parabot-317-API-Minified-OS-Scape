@@ -4,8 +4,6 @@ package org.parabot.osscape.accessors;
  * @author JKetelaar
  */
 public interface Widget {
-    Widget[][] getWidgets();
-
     Widget[] getChildren();
 
     String[] getWidgetActions();
