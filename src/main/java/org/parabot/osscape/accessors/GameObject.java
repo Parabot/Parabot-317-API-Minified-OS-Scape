@@ -4,7 +4,7 @@ package org.parabot.osscape.accessors;
  * @author JKetelaar
  */
 public interface GameObject {
-    Object getInteractiveRender();
+    Renderable getInteractiveRender();
 
     int getInteractiveID();
 

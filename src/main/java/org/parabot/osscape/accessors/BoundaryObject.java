@@ -4,9 +4,9 @@ package org.parabot.osscape.accessors;
  * @author JKetelaar
  */
 public interface BoundaryObject {
-    Object getBoundryRender();
+    Renderable getBoundryRender();
 
-    Object getBoundryRender2();
+    Renderable getBoundryRender2();
 
     int getBoundryID();
 

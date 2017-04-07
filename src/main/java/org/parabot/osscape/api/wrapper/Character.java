@@ -1,21 +1,21 @@
 package org.parabot.osscape.api.wrapper;
 
-import org.ethan.oss.api.callbacks.ModelCallBack;
 import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.api.interactive.Camera;
 import org.ethan.oss.api.methods.Walking;
 import org.ethan.oss.api.pathfinder.Path;
 import org.ethan.oss.api.pathfinder.impl.RSMapPathFinder;
-import org.ethan.oss.api.wrappers.Model;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.osscape.Loader;
 import org.parabot.osscape.accessors.Actor;
 import org.parabot.osscape.accessors.Npc;
 import org.parabot.osscape.api.interfaces.Interactable;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Models;
 import org.parabot.osscape.api.methods.Players;
 
 import java.awt.*;
@@ -344,27 +344,27 @@ public abstract class Character implements Locatable, Interactable {
      * @TODO
      */
     public final Character getInteracting() {
-//        int index = this.accessor.getInteractingIndex();
-//        if (index != -1 && index < 32768) {
-//            return new Npc(Loader.getClient().getNpcs()[index], index);
-//        } else if (index >= 32768) {
-//            index -= 32768;
-//            try {
-//                if (Loader.getClient().getPlayers()[index] == null) {
-//                    return Players.getMyPlayer();
-//                }
-//                return new Player(Loader.getClient().getPlayers()[index], index);
-//            } catch (Throwable t) {
-//                return Players.getMyPlayer();
-//            }
-//        }
+        int index = this.accessor.getInteractingIndex();
+        if (index != -1 && index < 32768) {
+            return new org.parabot.osscape.api.wrapper.Npc(Loader.getClient().getLocalNpcs()[index], index);
+        } else if (index >= 32768) {
+            index -= 32768;
+            try {
+                if (Loader.getClient().getLocalPlayers()[index] == null) {
+                    return Players.getMyPlayer();
+                }
+                return new Player(Loader.getClient().getLocalPlayers()[index], index);
+            } catch (Throwable t) {
+                return Players.getMyPlayer();
+            }
+        }
 
         return null;
     }
 
     public Model getModel() {
         try {
-            Model model = ModelCallBack.get(accessor);
+            org.parabot.osscape.accessors.Model model = Models.get(accessor);
 
             if (model == null) {
                 return null;
@@ -379,7 +379,7 @@ public abstract class Character implements Locatable, Interactable {
                 }
             }
 
-            return new Model(model, getOrientation(), getLocalX(), (int) getLocalY(), tileByte == 1 ? 210 : 0);
+            return new Model(model, getOrientation(), getLocalX(), getLocalY(), tileByte == 1 ? 210 : 0);
         } catch (Exception ignored) {
         }
         return null;
