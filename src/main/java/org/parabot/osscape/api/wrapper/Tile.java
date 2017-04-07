@@ -2,7 +2,7 @@ package org.parabot.osscape.api.wrapper;
 
 import org.ethan.oss.api.input.Mouse;
 import org.parabot.osscape.api.methods.Camera;
-import org.ethan.oss.api.methods.Walking;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.PolygonUtils;
 import org.ethan.oss.utils.Random;

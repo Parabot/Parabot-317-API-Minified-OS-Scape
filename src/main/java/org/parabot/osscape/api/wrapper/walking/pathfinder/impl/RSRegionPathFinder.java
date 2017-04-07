@@ -1,6 +1,6 @@
 package org.parabot.osscape.api.wrapper.walking.pathfinder.impl;
 
-import org.ethan.oss.api.methods.Walking;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.wrapper.walking.pathfinder.AStarPathFinder;

@@ -1,24 +1,27 @@
-package org.ethan.oss.api.methods;
+package org.parabot.osscape.api.wrapper.walking;
 
-import org.ethan.oss.api.input.Keyboard;
-import org.ethan.oss.api.input.Mouse;
-import org.parabot.osscape.api.wrapper.walking.pathfinder.Path;
-import org.parabot.osscape.api.wrapper.walking.pathfinder.impl.RSRegionPathFinder;
-import org.ethan.oss.reflection.ReflWrapper;
-import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.core.ui.Logger;
+import org.parabot.environment.api.utils.Time;
+import org.parabot.environment.input.Keyboard;
+import org.parabot.environment.input.Mouse;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.interfaces.StatePredicate;
 import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Players;
 import org.parabot.osscape.api.wrapper.Tile;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.Path;
+import org.parabot.osscape.api.wrapper.walking.pathfinder.impl.RSRegionPathFinder;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class Walking extends ReflWrapper {
+/**
+ * @author JKetelaar
+ */
+public class Walking {
     public static final int FORWARDS  = 0;
     public static final int BACKWARDS = 1;
 
@@ -56,14 +59,15 @@ public class Walking extends ReflWrapper {
     }
 
     public static byte[][][] getTileFlags() {
-        return (byte[][][]) getFieldValue("TileSettings", null);
+        return Game.getTileSettings();
     }
 
     public static int[][] getCollisionFlags(int plane) {
 
-        final Object collisionMap = ((Object[]) getFieldValue("getCollisionMaps", null))[plane];
-        return (int[][]) getFieldValue("getFlags", collisionMap);
+//        final Object collisionMap = ((Object[]) getFieldValue("getCollisionMaps", null))[plane];
+//        return (int[][]) getFieldValue("getFlags", collisionMap);
 
+        return new int[0][];
     }
 
     public static Tile getClosestTileOnMap(Tile current) {
@@ -78,10 +82,9 @@ public class Walking extends ReflWrapper {
     public static boolean clickOnMap(Tile tile) {
         Point m = Calculations.tileToMap(tile);
         if (m.x != -1 || clickOnMap(getClosestTileOnMap(tile))) {
-            Keyboard.press(KeyEvent.VK_CONTROL);
-            Mouse.move(m.x, m.y);
-            Mouse.click(true);
-            Keyboard.release(KeyEvent.VK_CONTROL);
+            Keyboard.getInstance().pressKey(KeyEvent.VK_CONTROL);
+            Mouse.getInstance().click(m.x, m.y, true);
+            Keyboard.getInstance().releaseKey(KeyEvent.VK_CONTROL);
             Utilities.sleepUntil(WALKING(), 600);
             if (Players.getMyPlayer().isMoving()) {
                 Utilities.sleepWhile(WALKING(tile, 3), 7500);
@@ -110,10 +113,10 @@ public class Walking extends ReflWrapper {
                     attemptsMade++;
                 }
             } else {
-                System.out.println("No next tile in path to " + target);
+                Logger.addMessage("No next tile in path to " + target, false);
                 break;
             }
-            Condition.sleep(10);
+            Time.sleep(10);
         }
         clickOnMap(target);
     }
@@ -130,15 +133,11 @@ public class Walking extends ReflWrapper {
     }
 
     public static void walkToLocal(int x, int y) {
-
         RSRegionPathFinder pf   = new RSRegionPathFinder();
         Path               path = pf.getPath(x, y, RSRegionPathFinder.FULL);
         if (path != null && path.getLength() != 0) {
             final Tile[] tiles = path.toTiles(1);
             traverse(tiles, 0);
-        } else {
-            // Config.getInstance().getLogger().log(Level.INFO, "PATH NOT
-            // FOUND");
         }
     }
 

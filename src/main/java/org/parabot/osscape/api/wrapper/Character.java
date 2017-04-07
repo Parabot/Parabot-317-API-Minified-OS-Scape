@@ -2,7 +2,7 @@ package org.parabot.osscape.api.wrapper;
 
 import org.ethan.oss.api.input.Mouse;
 import org.parabot.osscape.api.methods.Camera;
-import org.ethan.oss.api.methods.Walking;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.parabot.osscape.api.wrapper.walking.pathfinder.Path;
 import org.parabot.osscape.api.wrapper.walking.pathfinder.impl.RSMapPathFinder;
 import org.ethan.oss.utils.Condition;
