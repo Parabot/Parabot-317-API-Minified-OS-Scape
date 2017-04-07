@@ -2,10 +2,10 @@ package org.ethan.oss.component.debug;
 
 import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.enums.Tab;
-import org.ethan.oss.api.methods.Inventory;
-import org.parabot.osscape.api.wrapper.Item;
 import org.parabot.environment.api.utils.Filter;
 import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Inventory;
+import org.parabot.osscape.api.wrapper.Item;
 
 import java.awt.*;
 
@@ -16,7 +16,7 @@ public class InventoryDebugger extends Debugger<Item> {
         return Inventory.getAllItems(new Filter<Item>() {
             @Override
             public boolean accept(Item i) {
-                return i.isValid() && i != null;
+                return i.isValid();
             }
         });
     }

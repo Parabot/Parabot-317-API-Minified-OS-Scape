@@ -9,11 +9,28 @@ public class ItemDefinition {
     private static Hashtable<Integer, ItemDefinition> cache = new Hashtable<>();
 
     private ItemComposite accessor;
-    private int id;
+    private int           id;
 
     public ItemDefinition(ItemComposite accessor, int id) {
         this.accessor = accessor;
         this.id = id;
+    }
+
+    /**
+     * // TODO: getAccessor is still null "new ItemDefinition(null, id)"
+     *
+     * @param id
+     *
+     * @return
+     */
+    public static ItemDefinition getItemDefinition(int id) {
+        ItemDefinition definition;
+        if ((definition = cache.get(id)) == null) {
+            definition = new ItemDefinition(null, id);
+            cache.put(id, definition);
+        }
+
+        return definition;
     }
 
     public String getName() {
@@ -26,22 +43,5 @@ public class ItemDefinition {
 
     public ItemComposite getAccessor() {
         return accessor;
-    }
-
-    /**
-     * // TODO: getAccessor is still null "new ItemDefinition(null, id)"
-     *
-     * @param id
-     *
-     * @return
-     */
-    public static ItemDefinition getItemDefinition(int id){
-        ItemDefinition definition;
-        if ((definition = cache.get(id)) == null){
-            definition = new ItemDefinition(null, id);
-            cache.put(id, definition);
-        }
-
-        return definition;
     }
 }

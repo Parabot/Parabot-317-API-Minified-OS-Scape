@@ -1,11 +1,11 @@
 package org.parabot.osscape.api.methods;
 
-import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.parabot.core.Context;
 import org.parabot.environment.api.utils.Timer;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.wrapper.Player;
 import org.parabot.osscape.api.wrapper.Tile;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 
 import java.applet.Applet;
 import java.awt.*;

@@ -1,7 +1,8 @@
 package org.ethan.oss.script;
 
 import org.ethan.oss.ServerEngine;
-import org.ethan.oss.api.listeners.*;
+import org.ethan.oss.api.listeners.MessageEvent;
+import org.ethan.oss.api.listeners.MessageListener;
 import org.ethan.oss.api.randoms.RandomEvent;
 import org.ethan.oss.api.randoms.RandomEventHandler;
 import org.parabot.environment.scripts.Script;
@@ -14,7 +15,7 @@ public class ScriptEngine {
     public static ScriptEngine INSTANCE = new ScriptEngine();
     public RandomEventHandler randomEventHandler;
     public Script script = null;
-    private Thread            randomEventsThread;
+    private Thread randomEventsThread;
 
     private List<MessageListener> messageListeners = new ArrayList<MessageListener>();
     private PaintListener paintListener;

@@ -9,6 +9,7 @@ import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
 import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Inventory;
 import org.parabot.osscape.api.methods.Npcs;
 import org.parabot.osscape.api.wrapper.Item;
 import org.parabot.osscape.api.wrapper.Npc;

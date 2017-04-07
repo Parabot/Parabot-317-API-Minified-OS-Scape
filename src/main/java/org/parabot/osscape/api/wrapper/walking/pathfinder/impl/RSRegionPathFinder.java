@@ -1,8 +1,8 @@
 package org.parabot.osscape.api.wrapper.walking.pathfinder.impl;
 
-import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.parabot.osscape.api.wrapper.walking.pathfinder.AStarPathFinder;
 import org.parabot.osscape.api.wrapper.walking.pathfinder.ClosestHeuristic;
 import org.parabot.osscape.api.wrapper.walking.pathfinder.Path;

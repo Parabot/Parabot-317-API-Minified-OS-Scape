@@ -24,25 +24,25 @@ public class Interfaces {
         return get()[parent];
     }
 
-    public static InterfaceChild get(int parent, int child){
+    public static InterfaceChild get(int parent, int child) {
         return get(parent).getChild(child);
     }
 
-    public static InterfaceChild searchForText(String search, boolean contains, boolean strict){
-        for (Interface i : get()){
-            for (InterfaceChild interfaceChild : i.getChildren()){
+    public static InterfaceChild searchForText(String search, boolean contains, boolean strict) {
+        for (Interface i : get()) {
+            for (InterfaceChild interfaceChild : i.getChildren()) {
                 String text = interfaceChild.getText();
-                if (!strict){
+                if (!strict) {
                     text = text.toLowerCase();
                     search = search.toLowerCase();
                 }
 
-                if (contains){
-                    if (text.contains(search)){
+                if (contains) {
+                    if (text.contains(search)) {
                         return interfaceChild;
                     }
-                }else{
-                    if (text.equals(search)){
+                } else {
+                    if (text.equals(search)) {
                         return interfaceChild;
                     }
                 }
@@ -52,20 +52,20 @@ public class Interfaces {
         return null;
     }
 
-    public static InterfaceChild searchForText(String text, boolean contains){
+    public static InterfaceChild searchForText(String text, boolean contains) {
         return searchForText(text, contains, false);
     }
 
-    public static InterfaceChild searchForText(String text){
+    public static InterfaceChild searchForText(String text) {
         return searchForText(text, false);
     }
 
-    public static boolean hasAction(InterfaceChild child, String action, boolean strict){
+    public static boolean hasAction(InterfaceChild child, String action, boolean strict) {
         if (child.getWidgetActions() != null) {
             for (String s : child.getWidgetActions()) {
-                if (!strict && s.equalsIgnoreCase(action)){
+                if (!strict && s.equalsIgnoreCase(action)) {
                     return true;
-                }else if (strict && s.equals(action)){
+                } else if (strict && s.equals(action)) {
                     return true;
                 }
             }
@@ -73,7 +73,7 @@ public class Interfaces {
         return false;
     }
 
-    public static boolean hasAction(InterfaceChild child, String action){
+    public static boolean hasAction(InterfaceChild child, String action) {
         return hasAction(child, action, false);
     }
 

@@ -1,18 +1,15 @@
 package org.parabot.osscape.api.wrapper;
 
 import org.ethan.oss.api.input.Mouse;
-import org.parabot.osscape.api.methods.Camera;
-import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.PolygonUtils;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.osscape.api.interfaces.Interactable;
 import org.parabot.osscape.api.interfaces.Locatable;
-import org.parabot.osscape.api.methods.Calculations;
-import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.*;
 import org.parabot.osscape.api.methods.Menu;
-import org.parabot.osscape.api.methods.Players;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 
 import java.awt.*;
 

@@ -39,7 +39,7 @@ public class ServerEngine {
     private Applet           applet;
     private Map<String, FieldHook>  fieldMap  = null;
     private Map<String, MethodHook> methodMap = null;
-    private FileDownloader   downloader;
+    private FileDownloader downloader;
     private String       user                     = null;
     private String       pass                     = null;
     private boolean      useRandomMouse           = true;

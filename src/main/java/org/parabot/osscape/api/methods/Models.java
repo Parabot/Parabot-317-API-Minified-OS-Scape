@@ -1,6 +1,5 @@
 package org.parabot.osscape.api.methods;
 
-
 import org.parabot.osscape.accessors.Model;
 
 import java.util.Hashtable;
@@ -16,7 +15,7 @@ public class Models {
 
     public static void add(Model model, Object render) {
         if (render != null && model != null) {
-            if (cacheTime < System.currentTimeMillis() - 5 * 60 * 1000){
+            if (cacheTime < System.currentTimeMillis() - 5 * 60 * 1000) {
                 modelCache.clear();
                 cacheTime = System.currentTimeMillis();
             }

@@ -1,14 +1,13 @@
-package org.ethan.oss.api.methods;
+package org.parabot.osscape.api.methods;
 
 import org.ethan.oss.api.enums.Tab;
-import org.ethan.oss.api.input.Keyboard;
 import org.ethan.oss.api.interactive.Widgets;
 import org.ethan.oss.api.wrappers.WidgetChild;
-import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
 import org.parabot.environment.api.utils.Filter;
-import org.parabot.osscape.api.methods.Game;
+import org.parabot.environment.api.utils.Time;
+import org.parabot.environment.input.Keyboard;
 import org.parabot.osscape.api.wrapper.Item;
 
 import java.awt.*;
@@ -29,11 +28,17 @@ public class Inventory {
             return list.toArray(new Item[list.size()]);
         }
         final WidgetChild child = Widgets.get(WIDGET_INVENTORY_INDEX, WIDGET_INVENTORY_SLOTS);
-        if (!child.isVisible()) {
+        if (child != null && !child.isVisible()) {
             return list.toArray(new Item[list.size()]);
         }
-        final int[] contentIds = child.getSlotContentIds();
-        final int[] stackSizes = child.getStackSizes();
+        int[] contentIds = new int[0];
+        if (child != null) {
+            contentIds = child.getSlotContentIds();
+        }
+        int[] stackSizes = new int[0];
+        if (child != null) {
+            stackSizes = child.getStackSizes();
+        }
         if (contentIds == null || stackSizes == null) {
             return list.toArray(new Item[list.size()]);
         }
@@ -59,7 +64,7 @@ public class Inventory {
     public static Item getItem(Filter<Item> filter) {
         Item[] items = getAllItems(filter);
 
-        if (items == null || items.length == 0) {
+        if (items.length == 0) {
             return nil();
         }
 
@@ -69,13 +74,13 @@ public class Inventory {
     public static void dropAll(boolean shiftDrop) {
         if (!Tab.INVENTORY.isOpen()) {
             Tab.INVENTORY.open();
-            Condition.sleep(Random.nextInt(75, 300));
+            Time.sleep(Random.nextInt(75, 300));
         }
         if (shiftDrop) {
-            Keyboard.press(KeyEvent.VK_SHIFT);
+            Keyboard.getInstance().pressKey(KeyEvent.VK_SHIFT);
         }
-        for (int i = 0; i < dropPattern.length; i++) {
-            final Item itemAt = getItemAt(dropPattern[i]);
+        for (int aDropPattern : dropPattern) {
+            final Item itemAt = getItemAt(aDropPattern);
             if (itemAt.isValid()) {
                 if (shiftDrop) {
                     itemAt.click();
@@ -85,20 +90,20 @@ public class Inventory {
             }
         }
         if (shiftDrop) {
-            Keyboard.release(KeyEvent.VK_SHIFT);
+            Keyboard.getInstance().releaseKey(KeyEvent.VK_SHIFT);
         }
     }
 
     public static void dropAllExcept(boolean shiftDrop, int... id) {
         if (!Tab.INVENTORY.isOpen()) {
             Tab.INVENTORY.open();
-            Condition.sleep(Random.nextInt(75, 300));
+            Time.sleep(Random.nextInt(75, 300));
         }
         if (shiftDrop) {
-            Keyboard.press(KeyEvent.VK_SHIFT);
+            Keyboard.getInstance().pressKey(KeyEvent.VK_SHIFT);
         }
-        for (int i = 0; i < dropPattern.length; i++) {
-            final Item itemAt = getItemAt(dropPattern[i]);
+        for (int aDropPattern : dropPattern) {
+            final Item itemAt = getItemAt(aDropPattern);
             if (itemAt.isValid() && (id == null || !Utilities.inArray(itemAt.getId(), id))) {
                 if (shiftDrop) {
                     itemAt.click();
@@ -108,20 +113,20 @@ public class Inventory {
             }
         }
         if (shiftDrop) {
-            Keyboard.release(KeyEvent.VK_SHIFT);
+            Keyboard.getInstance().releaseKey(KeyEvent.VK_SHIFT);
         }
     }
 
     public static void dropAllExcept(boolean shiftDrop, String... name) {
         if (!Tab.INVENTORY.isOpen()) {
             Tab.INVENTORY.open();
-            Condition.sleep(Random.nextInt(75, 300));
+            Time.sleep(Random.nextInt(75, 300));
         }
         if (shiftDrop) {
-            Keyboard.press(KeyEvent.VK_SHIFT);
+            Keyboard.getInstance().pressKey(KeyEvent.VK_SHIFT);
         }
-        for (int i = 0; i < dropPattern.length; i++) {
-            final Item itemAt = getItemAt(dropPattern[i]);
+        for (int aDropPattern : dropPattern) {
+            final Item itemAt = getItemAt(aDropPattern);
             if (itemAt.isValid() && (name == null || !Utilities.inArray(itemAt.getName(), name))) {
                 if (shiftDrop) {
                     itemAt.click();
@@ -131,14 +136,14 @@ public class Inventory {
             }
         }
         if (shiftDrop) {
-            Keyboard.release(KeyEvent.VK_SHIFT);
+            Keyboard.getInstance().releaseKey(KeyEvent.VK_SHIFT);
         }
     }
 
     public static Item getRandomItem(Filter<Item> filter) {
         Item[] items = getAllItems(filter);
 
-        if (items == null || items.length <= 0) {
+        if (items.length <= 0) {
             return nil();
         }
 

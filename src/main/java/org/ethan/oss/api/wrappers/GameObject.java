@@ -4,8 +4,6 @@ import org.ethan.oss.ServerEngine;
 import org.ethan.oss.api.callbacks.ModelCallBack;
 import org.ethan.oss.api.definitions.ObjectDefinition;
 import org.ethan.oss.api.input.Mouse;
-import org.parabot.osscape.api.methods.Camera;
-import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.ethan.oss.reflection.ReflWrapper;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
@@ -15,9 +13,11 @@ import org.parabot.osscape.api.interfaces.Interactable;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.interfaces.Nameable;
 import org.parabot.osscape.api.methods.Calculations;
+import org.parabot.osscape.api.methods.Camera;
 import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Menu;
 import org.parabot.osscape.api.wrapper.Tile;
+import org.parabot.osscape.api.wrapper.walking.Walking;
 
 import java.awt.*;
 

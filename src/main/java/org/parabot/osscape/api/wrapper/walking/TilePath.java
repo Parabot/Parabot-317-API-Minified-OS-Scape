@@ -1,6 +1,5 @@
 package org.parabot.osscape.api.wrapper.walking;
 
-import org.parabot.osscape.api.wrapper.walking.Walking;
 import org.parabot.osscape.api.methods.Calculations;
 import org.parabot.osscape.api.wrapper.Tile;
 

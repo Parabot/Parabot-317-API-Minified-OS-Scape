@@ -1,13 +1,7 @@
 package org.parabot.osscape.api.wrapper;
 
-import org.ethan.oss.api.wrappers.WidgetChild;
-import org.ethan.oss.utils.Utilities;
 import org.parabot.osscape.accessors.Widget;
-import org.parabot.osscape.accessors.WidgetNode;
-import org.parabot.osscape.api.methods.Game;
 import org.parabot.osscape.api.methods.Interfaces;
-
-import java.awt.*;
 
 /**
  * @author JKetelaar
@@ -15,7 +9,7 @@ import java.awt.*;
 public class InterfaceChild {
 
     private Widget widget;
-    private int index;
+    private int    index;
 
     private int widgetX;
     private int widgetY;
@@ -30,9 +24,9 @@ public class InterfaceChild {
     }
 
     public InterfaceChild[] getChildren() {
-        Widget[] widgets = widget.getChildren();
+        Widget[]         widgets           = widget.getChildren();
         InterfaceChild[] interfaceChildren = new InterfaceChild[widgets.length];
-        for (int i = 0; i < widgets.length; i++){
+        for (int i = 0; i < widgets.length; i++) {
             interfaceChildren[i] = new InterfaceChild(widgets[i], i);
         }
 

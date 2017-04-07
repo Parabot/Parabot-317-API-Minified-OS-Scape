@@ -15,7 +15,7 @@ public class Game {
 
     private static final Client accessor = Loader.getClient();
 
-    public static Widget[][] getWidgets(){
+    public static Widget[][] getWidgets() {
         return accessor.getWidgets();
     }
 
@@ -95,35 +95,35 @@ public class Game {
         return accessor.getMenuCount();
     }
 
-    public static int[] getWidgetPositionX(){
+    public static int[] getWidgetPositionX() {
         return accessor.getWidgetPositionX();
     }
 
-    public static int[] getWidgetPositionY(){
+    public static int[] getWidgetPositionY() {
         return accessor.getWidgetPositionY();
     }
 
-    public static WidgetNode getWidgetNodeCache(){
+    public static WidgetNode getWidgetNodeCache() {
         return accessor.getWidgetNodeCache();
     }
 
-    public static int getCameraPitch(){
+    public static int getCameraPitch() {
         return accessor.getCameraPitch();
     }
 
-    public static int getCameraYaw(){
+    public static int getCameraYaw() {
         return accessor.getCameraYaw();
     }
 
-    public static int getCameraX(){
+    public static int getCameraX() {
         return accessor.getCameraX();
     }
 
-    public static int getCameraY(){
+    public static int getCameraY() {
         return accessor.getCameraY();
     }
 
-    public static int getCameraZ(){
+    public static int getCameraZ() {
         return accessor.getCameraZ();
     }
 
