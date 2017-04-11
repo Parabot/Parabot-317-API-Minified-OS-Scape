@@ -33,10 +33,6 @@ public class XMLParser {
         Element  rootElement = doc.createElement("injector");
         doc.appendChild(rootElement);
 
-        for (Map.Entry<String, MethodHook> fieldHookEntry : ServerEngine.getInstance().getMethodMap().entrySet()) {
-
-        }
-
         Element interfaces = doc.createElement("interfaces");
         rootElement.appendChild(interfaces);
 
