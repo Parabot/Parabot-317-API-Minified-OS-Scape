@@ -19,7 +19,7 @@ script: "./.travis/maven-build.sh"
 notifications:
   email: false
   slack:
-    secure: osWX769z0hSVPbeF1ZHSENgR4i+VKFTMGFNIV02RhvZ4a1BXsGUG5VCCDYUoBzWPCA5avJHg+FrN7nEEaoIjc5/qqFmZFGwOitZJsOzvR8C18QcgyuEX+35U4eQF4h5ITpruvwNNQ/7hIWyPl/fEPcAswHFDAccEb5iRNJeFNeM=
+    secure: ElYiQdTUjMPixm/934/xyQAerZ5/Us5yw3YB4/5efVr1vyPdsJ14iAAYnWtPBVbPzOw2eKmD3t5enElZXAWAP2ckqS+OiD2BrZNnAJfPgl1c5ejcDR79SlluBQ220ZNOyYAzNLGHnaz2tS92bdtclfzv3q7Va5++gi/mu+VbfD8Bw+ncnP/RHphASyqRc4ulRwg0xWQ/gCyDlojKh5svexrrLvgGT5Ks42pJAMaZXAH/ztkcl1YiXsmpq7cSixQPXDbMvQvzjsE69BkZtwr8xr6gs4hlvWJibIiM+B8mSAy+yv5B1OWeFyIzYelHB6gRqoMCheDv+Mx0rwUKOAWsGiezwAWslyfCzk25Zv4qAuZqm7LqL1nL6/yMAgjrbOkLmQrctcwLorZ8G+Lb9Vu56qQ7rwxRoWF0rDMniBjrlxFzGaFWhCTtR/NA1mJDfUprHUbaRTEL5VOdidTRdh8Z1/UPg3l2qmBcAGTHv1Ir/pd7DJnvcuJPI8J0MAyz1NurRiSyoH8YAypjPtVexnI6aOjJZFn03isA/skC0U0t0xCJ4w0Obg0FMHPj4DYIJX5DWgDhrLvnmHoEYayy/4+q5dLN7rJ1aNr6AFOu8kUEW6utmTi/UO2R4PHkRiHdQXj27Y2+gsoDf4lqnVCOEt7hnYRsgESff32+fMfUKLhJoYk=
   webhooks:
     on_success: always
     on_failure: always
