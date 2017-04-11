@@ -78,7 +78,6 @@ public abstract class Character implements Locatable, Interactable {
         return accessor.getAnimation();
     }
 
-    //iIiIIiiIII = groundItem object rend shit
     @Override
     public boolean isOnScreen() {
         Model m = getModel();

@@ -19,6 +19,8 @@ import org.parabot.environment.servers.ServerManifest;
 import org.parabot.environment.servers.ServerProvider;
 import org.parabot.environment.servers.Type;
 import org.parabot.osscape.accessors.Client;
+import org.parabot.osscape.script.ScriptEngine;
+import org.parabot.osscape.ui.BotMenu;
 
 import javax.swing.*;
 import java.applet.Applet;
@@ -29,7 +31,7 @@ import java.net.URL;
 /**
  * @author Everel, JKetelaar
  */
-@ServerManifest(author = "Ethan, Everel & JKetelaar", name = "OS-Scape", type = Type.INJECTION, version = 0.1)
+@ServerManifest(author = "Ethan & JKetelaar", name = "OS-Scape", type = Type.INJECTION, version = 0.1)
 public class Loader extends ServerProvider {
     private static Client  client   = null;
     private        boolean extended = true;
@@ -89,7 +91,7 @@ public class Loader extends ServerProvider {
 
     @Override
     public void addMenuItems(JMenuBar bar) {
-
+        new BotMenu(bar);
     }
 
     @Override
@@ -108,8 +110,8 @@ public class Loader extends ServerProvider {
 
     @Override
     public void initScript(Script script) {
-//        ScriptEngine.getInstance().setScript(script);
-//        ScriptEngine.getInstance().init();
+        ScriptEngine.getInstance().setScript(script);
+        ScriptEngine.getInstance().init();
     }
 
     @Override
