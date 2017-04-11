@@ -14,7 +14,7 @@ install:
 
 script: "./.travis/maven-build.sh"
 
-after_deploy: "./.travis/call-creation.sh"
+#after_deploy: "./.travis/call-creation.sh"
 
 notifications:
   email: false
@@ -27,7 +27,7 @@ notifications:
 
 env:
   global:
-    - PROVIDER_VERSION=1.300.0
+    - PROVIDER_VERSION=0.1
 
 cache:
   directories:
@@ -42,12 +42,12 @@ deploy:
     bucket: parabot
     skip_cleanup: true
     local-dir: "./target/final/"
-    upload-dir: "artifacts/provider"
+    upload-dir: "artifacts/provider-osscape"
     region: us-west-1
     detect_encoding: true
     acl: public_read
     on:
-      repo: Parabot/Parabot-317-API-Minified
+      repo: Parabot/Parabot-317-API-Minified-OS-Scape
       branch:
         - master
         - development
