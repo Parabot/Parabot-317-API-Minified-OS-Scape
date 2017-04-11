@@ -87,11 +87,11 @@ public abstract class ReflWrapper {
             Class<?> c = ServerEngine.getInstance().loadClass(Hook.getInstance().getClass("getItemName", true));
             for (Method m : c.getDeclaredMethods()) {
                 if (m.getName().equals(Hook.getInstance().getField("getItemName", true))) {
-                    if (m.getParameterCount() == 1) {
+//                    if (m.getParameterCount() == 1) {
                         m.setAccessible(true);
                         Object i = m.invoke(obj, id);
                         return i;
-                    }
+//                    }
 
                 }
             }
@@ -106,11 +106,11 @@ public abstract class ReflWrapper {
             Class<?> c = ServerEngine.getInstance().loadClass(Hook.getInstance().getClass("transform2", false));
             for (Method m : c.getDeclaredMethods()) {
                 if (m.getName().equals(Hook.getInstance().getField("transform2", false))) {
-                    if (m.getParameterCount() == 1) {
+//                    if (m.getParameterCount() == 1) {
                         m.setAccessible(true);
                         Object i = m.invoke(obj, id);
                         return i;
-                    }
+//                    }
 
                 }
             }
