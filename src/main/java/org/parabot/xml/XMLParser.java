@@ -4,7 +4,6 @@ import org.ethan.oss.ServerEngine;
 import org.ethan.oss.hook.AccessorHook;
 import org.ethan.oss.hook.FieldHook;
 import org.ethan.oss.hook.Hook;
-import org.ethan.oss.hook.MethodHook;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 

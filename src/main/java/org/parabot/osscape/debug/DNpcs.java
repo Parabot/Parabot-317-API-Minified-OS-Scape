@@ -10,7 +10,6 @@ import java.awt.*;
  * @author JKetelaar
  */
 public class DNpcs extends AbstractDebugger {
-
     private boolean enabled;
 
     @Override
@@ -24,11 +23,10 @@ public class DNpcs extends AbstractDebugger {
     }
 
     @Override
-    public void paint(Graphics graphics) {
-        for (Npc npc : Npcs.getNearest()) {
-            if (npc != null && npc.isOnScreen()) {
-                npc.draw((Graphics2D) graphics);
-            }
+    public void paint(Graphics g) {
+        final Npc[] npcs = Npcs.getNearest();
+        for (final Npc npc : npcs) {
+            npc.draw((Graphics2D) g);
         }
     }
 }

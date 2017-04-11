@@ -88,9 +88,9 @@ public abstract class ReflWrapper {
             for (Method m : c.getDeclaredMethods()) {
                 if (m.getName().equals(Hook.getInstance().getField("getItemName", true))) {
 //                    if (m.getParameterCount() == 1) {
-                        m.setAccessible(true);
-                        Object i = m.invoke(obj, id);
-                        return i;
+                    m.setAccessible(true);
+                    Object i = m.invoke(obj, id);
+                    return i;
 //                    }
 
                 }
@@ -107,9 +107,9 @@ public abstract class ReflWrapper {
             for (Method m : c.getDeclaredMethods()) {
                 if (m.getName().equals(Hook.getInstance().getField("transform2", false))) {
 //                    if (m.getParameterCount() == 1) {
-                        m.setAccessible(true);
-                        Object i = m.invoke(obj, id);
-                        return i;
+                    m.setAccessible(true);
+                    Object i = m.invoke(obj, id);
+                    return i;
 //                    }
 
                 }
