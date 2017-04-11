@@ -36,13 +36,13 @@ cache:
 
 deploy:
   - provider: s3
-    access_key_id: AKIAJDZLZNH2PIKHUKOA
+    access_key_id: AKIAIXJLGEGYOUYYAZKQ
     secret_access_key:
-      secure: Opk2uGg0CyBIeqDX5EIu6UBRjaxjZwfNVNsjGbsA8QWjIu2zIUwFe1ZWJEkqzF5jqrN8ykgHw74ofrgZyBKH2nhGn7MN4wWWktKN4iIeq2D6gf8Cq31tzZcpgEfUaJnARXtu0jjCKag2PqglQAEc/OgVEeEFuUapJ0I4ITDZWbk=
+      secure: cXq9KcKBgJOnUZpSeJLIpOmHGAYdLVF5I50yOCQB7LlldkIhqnmQItwRpC3NEbN/5w74WDDWNwdUm1nfNFhN3KIjGLLlU8Xk3ZhlfilgoTB6EunkqB4ZZE3XT052+/LIuYOv9oAladEDlfFMF1wOLXN6iuy3WIa5PYqW1u5lgUKj0PyZ16YqzfsJuVFhj9Qj2V48GBH+mAg+aan4VcZs3kZawonmt23zLjyccEUCYJ9Gwo0W+m7Jx/EWmpX6N0zcSn8d1bw613u/vJaDv2isag1KbpGhdKmAAno00oOJwM80tRhXO4iqXYaQoN8HcbxiiqwBeFywbsCsO5HYo3x0VsfGnP0uelMSIvMDJmaY7/qDUEBjD50zuv8p4Xuq46PqQ6B5VM8liq/nJ14ggHOx0StdtenThP143xOed05lAdEtZOHeVc189HuV7ZSApHtXruGlSLwcwNly+h9wdvjBd62FaNoVlpleQ/gnQdFLbZBcYWbmA4zCtwLmvE5MTEfysL+YiiwHTDwZVUQOkvfVI/zePSx5LLA44zkVgUH1mp4DOrudVSBbczej9F3G5wOS19Ht16l5assg37FT41/Hurk2g5F6C98CKTVLIUd/D/tXYguhkKSDk92YqRtGJl0SfOzOoRnDa0vGmOYxfWZ+33buXZ8Oqt7S6sbRyozsa3c=
     bucket: parabot
     skip_cleanup: true
     local-dir: "./target/final/"
-    upload-dir: "artifacts/provider-osscape"
+    upload-dir: "artifacts/provider-os-scape"
     region: us-west-1
     detect_encoding: true
     acl: public_read
