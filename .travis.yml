@@ -42,7 +42,7 @@ deploy:
     bucket: parabot
     skip_cleanup: true
     local-dir: "./target/final/"
-    upload-dir: "artifacts/provider-os-scape"
+    upload-dir: "artifacts/os-scape-provider"
     region: us-west-1
     detect_encoding: true
     acl: public_read
