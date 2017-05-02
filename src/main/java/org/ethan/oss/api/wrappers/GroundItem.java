@@ -34,8 +34,7 @@ public class GroundItem extends ReflWrapper implements Locatable, Identifiable, 
             location = tile;
             id = (int) getFieldValue("ItemID", raw);
             amount = (int) getFieldValue("StackSizes", raw);
-            // TODO: Still null accessor
-            itemDefinition = new ItemDefinition(null, id);
+            itemDefinition = ItemDefinition.getItemDefinition(id);
         } else {
             id = -1;
             amount = -1;

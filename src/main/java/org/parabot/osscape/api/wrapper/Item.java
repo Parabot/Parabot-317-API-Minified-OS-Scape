@@ -157,8 +157,7 @@ public class Item implements Identifiable, Nameable, Interactable {
     @Override
     public String getName() {
         if (itemDefinition == null) {
-            // TODO: Accessor still null
-            itemDefinition = new ItemDefinition(null, id);
+            itemDefinition = ItemDefinition.getItemDefinition(id);
         }
         return itemDefinition.getName();
     }
