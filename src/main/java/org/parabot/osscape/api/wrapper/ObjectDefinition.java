@@ -1,14 +1,11 @@
 package org.parabot.osscape.api.wrapper;
 
-import org.ethan.oss.api.callbacks.ObjectDefinitionCallBack;
-import org.ethan.oss.reflection.ReflWrapper;
 import org.parabot.core.Context;
 import org.parabot.core.asm.wrappers.Invoker;
 import org.parabot.core.parsers.hooks.HookParser;
 import org.parabot.core.parsers.hooks.XMLHookParser;
 import org.parabot.core.reflect.RefClass;
 import org.parabot.core.reflect.RefMethod;
-import org.parabot.osscape.accessors.ItemComposite;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -76,7 +73,7 @@ public class ObjectDefinition {
     }
 
     public String getName() {
-        String name =  accessor.getName();
+        String name = accessor.getName();
         return name == null || name.equalsIgnoreCase("null") ? null : name;
     }
 
