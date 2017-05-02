@@ -79,43 +79,43 @@ public class SceneObject implements Locatable, Interactable {
         return false;
     }
 
-    public org.parabot.osscape.accessors.ObjectDefinition getObjectDefinition(){
-
+    public ObjectDefinition getObjectDefinition(){
+        return ObjectDefinition.getObjectDefinition(this.getID());
     }
 
-    public Model getModel() {
-        try {
-            int gridX = 0;
-            int gridY = 0;
-            if (type.equals(Type.GAME_OBJECT)) {
-                gridX = getWorldX();
-                gridY = getWorldY();
-            } else if (type.equals(Type.BOUNDARY)) {
-                gridX = getLocalX();
-                gridY = getLocalY();
-            }
-
-            int tileByte = Walking.getTileFlags()[Game.getPlane()][getLocation().getX() - Game.getBaseX()][getLocation().getY()
-                    - Game.getBaseY()];
-            if (getName() != null && getName().toLowerCase().contains("fishing")) {
-                tileByte = 0;
-            }
-            int      z          = tileByte == 1 ? 210 : 0;
-            Object[] renderable = new Object[]{ getRender(), null };
-            if (instanceOf(renderable[0])) {
-                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[0]), 0, gridX, gridY, z);
-            }
-            if (instanceOf(renderable[1])) {
-                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[1]), 0, gridX, gridY, z);
-            }
-
-            return renderable[0] != null && ModelCallBack.get(renderable[0]) != null
-                    ? new org.ethan.oss.api.wrappers.Model(ModelCallBack.get(renderable[0]), 0, gridX, gridY, z) : null;
-        } catch (Exception e) {
-
-        }
-        return null;
-    }
+//    public Model getModel() {
+//        try {
+//            int gridX = 0;
+//            int gridY = 0;
+//            if (type.equals(Type.GAME_OBJECT)) {
+//                gridX = getWorldX();
+//                gridY = getWorldY();
+//            } else if (type.equals(Type.BOUNDARY)) {
+//                gridX = getLocalX();
+//                gridY = getLocalY();
+//            }
+//
+//            int tileByte = Walking.getTileFlags()[Game.getPlane()][getLocation().getX() - Game.getBaseX()][getLocation().getY()
+//                    - Game.getBaseY()];
+//            if (getName() != null && getName().toLowerCase().contains("fishing")) {
+//                tileByte = 0;
+//            }
+//            int      z          = tileByte == 1 ? 210 : 0;
+//            Object[] renderable = new Object[]{ getRender(), null };
+//            if (instanceOf(renderable[0])) {
+//                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[0]), 0, gridX, gridY, z);
+//            }
+//            if (instanceOf(renderable[1])) {
+//                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[1]), 0, gridX, gridY, z);
+//            }
+//
+//            return renderable[0] != null && ModelCallBack.get(renderable[0]) != null
+//                    ? new org.ethan.oss.api.wrappers.Model(ModelCallBack.get(renderable[0]), 0, gridX, gridY, z) : null;
+//        } catch (Exception e) {
+//
+//        }
+//        return null;
+//    }
 
     public Renderable getRender() {
         return accessor.getRender();

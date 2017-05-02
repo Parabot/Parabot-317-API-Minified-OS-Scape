@@ -13,7 +13,7 @@ import org.parabot.osscape.accessors.ItemComposite;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-public class ObjectDefinition extends ReflWrapper {
+public class ObjectDefinition {
 
     private static Hashtable<Integer, ObjectDefinition> cache = new Hashtable<>();
 
@@ -32,10 +32,10 @@ public class ObjectDefinition extends ReflWrapper {
      */
     public static ObjectDefinition getObjectDefinition(int id) {
         ObjectDefinition definition;
-        if ((definition = cache.get(id)) == null) {
+//        if ((definition = cache.get(id)) == null) {
             definition = new ObjectDefinition(getObjecteDefinition(id), id);
             cache.put(id, definition);
-        }
+//        }
 
         return definition;
     }
@@ -48,7 +48,7 @@ public class ObjectDefinition extends ReflWrapper {
             ArrayList<Invoker> invokers = xmlHookParser.getInvokersCache();
             for (Invoker invoker : invokers) {
                 if (invoker.getInto().interfaces.size() == 1) {
-                    if (invoker.getMethodName().equalsIgnoreCase("getItem")) {
+                    if (invoker.getMethodName().equalsIgnoreCase("getDefinition")) {
                         try {
                             RefClass  itemClass  = new RefClass(Context.getInstance().getASMClassLoader().loadClass(invoker.getInto().name));
                             RefMethod itemMethod = null;
@@ -76,7 +76,8 @@ public class ObjectDefinition extends ReflWrapper {
     }
 
     public String getName() {
-        return accessor.getName();
+        String name =  accessor.getName();
+        return name == null || name.equalsIgnoreCase("null") ? null : name;
     }
 
     public String[] getActions() {

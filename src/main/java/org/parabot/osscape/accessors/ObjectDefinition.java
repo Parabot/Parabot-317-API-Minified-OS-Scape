@@ -7,4 +7,6 @@ public interface ObjectDefinition {
     String[] getActions();
 
     String getName();
+
+    ObjectDefinition getDefinition(int id);
 }
