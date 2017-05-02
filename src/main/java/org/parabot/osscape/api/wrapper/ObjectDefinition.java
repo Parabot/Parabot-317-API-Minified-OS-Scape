@@ -32,10 +32,10 @@ public class ObjectDefinition {
      */
     public static ObjectDefinition getObjectDefinition(int id) {
         ObjectDefinition definition;
-//        if ((definition = cache.get(id)) == null) {
+        if ((definition = cache.get(id)) == null) {
             definition = new ObjectDefinition(getObjecteDefinition(id), id);
             cache.put(id, definition);
-//        }
+        }
 
         return definition;
     }
