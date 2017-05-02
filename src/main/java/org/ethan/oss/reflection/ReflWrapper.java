@@ -14,7 +14,8 @@ public abstract class ReflWrapper {
         try {
 
             Class<?> c     = ServerEngine.getInstance().loadClass(Hook.getInstance().getClass(str, true));
-            Field    field = c.getDeclaredField(Hook.getInstance().getField(str, true));
+            String s = Hook.getInstance().getField(str, true);
+            Field    field = c.getDeclaredField(s);
             field.setAccessible(true);
             if (Hook.getInstance().getMult(str) != -1) {
                 Integer decoded = (int) field.get(instance) * Hook.getInstance().getMult(str);
@@ -22,7 +23,7 @@ public abstract class ReflWrapper {
             } else {
                 return field.get(instance);
             }
-        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalArgumentException | IllegalAccessException | NullPointerException e) {
             e.printStackTrace();
         }
         return null;

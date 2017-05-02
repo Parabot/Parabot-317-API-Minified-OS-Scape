@@ -5,6 +5,7 @@ import org.ethan.oss.api.interactive.Widgets;
 import org.ethan.oss.api.wrappers.WidgetChild;
 import org.parabot.osscape.Loader;
 import org.parabot.osscape.accessors.Client;
+import org.parabot.osscape.accessors.Region;
 import org.parabot.osscape.accessors.Widget;
 import org.parabot.osscape.accessors.WidgetNode;
 
@@ -137,6 +138,10 @@ public class Game {
 
     public static String[] getMenuOptions() {
         return accessor.getMenuOptions();
+    }
+
+    public static Region getRegion(){
+        return accessor.getRegion();
     }
 
     public static int getSpecialAttackPercent() {

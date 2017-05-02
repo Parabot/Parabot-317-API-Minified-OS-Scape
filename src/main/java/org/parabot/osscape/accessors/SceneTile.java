@@ -4,7 +4,17 @@ package org.parabot.osscape.accessors;
  * @author JKetelaar
  */
 public interface SceneTile {
-    GameObject getGameObject();
+    /**
+     * @TODO: Make #getGameObjects
+     *
+     * @return
+     */
+    GameObject[] getGameObject();
 
-    BoundaryObject getBoundaryObject();
+    /**
+     * @TODO: Make #getBoundaryObjects
+     *
+     * @return
+     */
+    BoundaryObject[] getBoundaryObject();
 }

@@ -29,7 +29,7 @@ public class BotMenu implements ActionListener {
 //        JMenuItem messages = newItem("Messages");
         JMenuItem mouse = newItem("Mouse");
         JMenuItem npcs  = newItem("Npcs");
-//        JMenuItem objects = newItem("Objects");
+        JMenuItem objects = newItem("Objects");
         JMenuItem players  = newItem("Players");
         JMenuItem username = newItem("Username");
 
@@ -44,7 +44,7 @@ public class BotMenu implements ActionListener {
 //        debugger.addDebugger("Messages", new DMessages());
         debugger.addDebugger("Mouse", new DMouse());
         debugger.addDebugger("Npcs", new DNpcs());
-//        debugger.addDebugger("Objects", new DSceneObjects());
+        debugger.addDebugger("Objects", new DObjects());
         debugger.addDebugger("Players", new DPlayers());
         debugger.addDebugger("Username", new DUsername());
 
@@ -61,7 +61,7 @@ public class BotMenu implements ActionListener {
 //        debug.add(messages);
         debug.add(mouse);
         debug.add(npcs);
-//        debug.add(objects);
+        debug.add(objects);
         debug.add(players);
         debug.add(username);
 

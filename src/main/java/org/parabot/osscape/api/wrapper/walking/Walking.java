@@ -154,10 +154,10 @@ public class Walking {
     }
 
     public static void walkTo(Tile target, boolean useRun) {
-        if (!Game.isLoggedIn()) {
-            return;
-        }
-        if (!Game.isRunning() && useRun) {
+//        if (!Game.isLoggedIn()) {
+//            return;
+//        }
+        if (useRun && !Game.isRunning()) {
             if (Game.getEnergy() >= Random.nextInt(10, 30)) {
                 Game.enableRunning();
             }
