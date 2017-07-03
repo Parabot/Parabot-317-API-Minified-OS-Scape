@@ -55,8 +55,7 @@ public class Loader extends ServerProvider {
         try {
             Hook.getInstance().init();
 
-            final Context           context     = Context.getInstance();
-            final ASMClassLoader    classLoader = context.getASMClassLoader();
+            final ASMClassLoader    classLoader = Context.getInstance().getASMClassLoader();
             final Class<?>          clientClass = classLoader.loadClass(Context.getInstance().getServerProviderInfo().getClientClass());
             final OSScapeParameters parser      = new OSScapeParameters();
             Object                  instance    = clientClass.newInstance();
