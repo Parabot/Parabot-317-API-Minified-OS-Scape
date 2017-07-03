@@ -3,8 +3,6 @@ package org.parabot.osscape.debug;
 import org.ethan.oss.api.interactive.GameObjects;
 import org.ethan.oss.api.wrappers.GameObject;
 import org.parabot.core.paint.AbstractDebugger;
-import org.parabot.osscape.api.methods.Npcs;
-import org.parabot.osscape.api.wrapper.Npc;
 
 import java.awt.*;
 
@@ -18,7 +16,7 @@ public class DObjects extends AbstractDebugger {
     public void toggle() {
         this.enabled = !this.enabled;
 
-        if (true){
+        if (true) {
             GameObject[] npcs = GameObjects.getAll();
             for (final GameObject npc : GameObjects.getAll()) {
                 System.out.println(npc.getActions());

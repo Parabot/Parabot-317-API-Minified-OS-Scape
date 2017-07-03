@@ -27,9 +27,9 @@ public class BotMenu implements ActionListener {
         JMenuItem locations = newItem("Locations");
         JMenuItem minimap   = newItem("Minimap");
 //        JMenuItem messages = newItem("Messages");
-        JMenuItem mouse = newItem("Mouse");
-        JMenuItem npcs  = newItem("Npcs");
-        JMenuItem objects = newItem("Objects");
+        JMenuItem mouse    = newItem("Mouse");
+        JMenuItem npcs     = newItem("Npcs");
+        JMenuItem objects  = newItem("Objects");
         JMenuItem players  = newItem("Players");
         JMenuItem username = newItem("Username");
 

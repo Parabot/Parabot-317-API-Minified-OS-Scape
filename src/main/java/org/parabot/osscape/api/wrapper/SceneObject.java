@@ -1,10 +1,8 @@
 package org.parabot.osscape.api.wrapper;
 
 import org.ethan.oss.api.callbacks.ModelCallBack;
-import org.ethan.oss.api.wrappers.*;
-import org.ethan.oss.api.wrappers.Model;
-import org.parabot.osscape.accessors.*;
 import org.parabot.osscape.accessors.GameObject;
+import org.parabot.osscape.accessors.Renderable;
 import org.parabot.osscape.api.interfaces.Interactable;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.methods.Game;
@@ -19,12 +17,13 @@ public class SceneObject implements Locatable, Interactable {
 
     private org.parabot.osscape.accessors.SceneObject accessor;
     private Type                                      type;
+    private ObjectDefinition definition;
 
     public SceneObject(GameObject accessor, int type) {
         new SceneObject(accessor, Type.getForID(type));
     }
 
-    public SceneObject(GameObject accessor, Type type){
+    public SceneObject(GameObject accessor, Type type) {
         this.accessor = accessor;
         this.type = type;
     }
@@ -60,7 +59,7 @@ public class SceneObject implements Locatable, Interactable {
     }
 
     @Override
-    public Tile getLocation(){
+    public Tile getLocation() {
         return new Tile(Game.getBaseX() + getLocalX(), Game.getBaseY() + getLocalY(), getPlane());
     }
 
@@ -79,43 +78,47 @@ public class SceneObject implements Locatable, Interactable {
         return false;
     }
 
-    public ObjectDefinition getObjectDefinition(){
-        return ObjectDefinition.getObjectDefinition(this.getID());
+    public ObjectDefinition getObjectDefinition() {
+        if (this.definition == null) {
+            this.definition = ObjectDefinition.getObjectDefinition(this.getID());
+        }
+
+        return this.definition;
     }
 
-//    public Model getModel() {
-//        try {
-//            int gridX = 0;
-//            int gridY = 0;
-//            if (type.equals(Type.GAME_OBJECT)) {
-//                gridX = getWorldX();
-//                gridY = getWorldY();
-//            } else if (type.equals(Type.BOUNDARY)) {
-//                gridX = getLocalX();
-//                gridY = getLocalY();
-//            }
-//
-//            int tileByte = Walking.getTileFlags()[Game.getPlane()][getLocation().getX() - Game.getBaseX()][getLocation().getY()
-//                    - Game.getBaseY()];
-//            if (getName() != null && getName().toLowerCase().contains("fishing")) {
-//                tileByte = 0;
-//            }
-//            int      z          = tileByte == 1 ? 210 : 0;
-//            Object[] renderable = new Object[]{ getRender(), null };
-//            if (instanceOf(renderable[0])) {
-//                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[0]), 0, gridX, gridY, z);
-//            }
-//            if (instanceOf(renderable[1])) {
-//                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[1]), 0, gridX, gridY, z);
-//            }
-//
-//            return renderable[0] != null && ModelCallBack.get(renderable[0]) != null
-//                    ? new org.ethan.oss.api.wrappers.Model(ModelCallBack.get(renderable[0]), 0, gridX, gridY, z) : null;
-//        } catch (Exception e) {
-//
-//        }
-//        return null;
-//    }
+    public org.ethan.oss.api.wrappers.Model getModel() {
+        try {
+            int gridX = 0;
+            int gridY = 0;
+            if (type.equals(Type.GAME_OBJECT)) {
+                gridX = getWorldX();
+                gridY = getWorldY();
+            } else if (type.equals(Type.BOUNDARY)) {
+                gridX = getLocalX();
+                gridY = getLocalY();
+            }
+
+            int tileByte = Walking.getTileFlags()[Game.getPlane()][getLocation().getX() - Game.getBaseX()][getLocation().getY()
+                    - Game.getBaseY()];
+            if (this.getObjectDefinition().getName() != null && this.getObjectDefinition().getName().toLowerCase().contains("fishing")) {
+                tileByte = 0;
+            }
+            int      z          = tileByte == 1 ? 210 : 0;
+            Object[] renderable = new Object[]{ getRender(), null };
+            if (instanceOf(renderable[0])) {
+                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[0]), 0, gridX, gridY, z);
+            }
+            if (instanceOf(renderable[1])) {
+                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[1]), 0, gridX, gridY, z);
+            }
+
+            return renderable[0] != null && ModelCallBack.get(renderable[0]) != null
+                    ? new org.ethan.oss.api.wrappers.Model(ModelCallBack.get(renderable[0]), 0, gridX, gridY, z) : null;
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
 
     public Renderable getRender() {
         return accessor.getRender();
@@ -200,18 +203,18 @@ public class SceneObject implements Locatable, Interactable {
             this.id = id;
         }
 
-        public int getId() {
-            return id;
-        }
-
-        public static Type getForID(int id){
-            for (Type type : values()){
-                if (type.getId() == id){
+        public static Type getForID(int id) {
+            for (Type type : values()) {
+                if (type.getId() == id) {
                     return type;
                 }
             }
 
             return null;
+        }
+
+        public int getId() {
+            return id;
         }
     }
 }

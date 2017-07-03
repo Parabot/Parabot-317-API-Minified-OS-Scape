@@ -140,7 +140,7 @@ public class Game {
         return accessor.getMenuOptions();
     }
 
-    public static Region getRegion(){
+    public static Region getRegion() {
         return accessor.getRegion();
     }
 
