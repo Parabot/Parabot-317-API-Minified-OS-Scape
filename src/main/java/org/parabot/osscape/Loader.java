@@ -1,5 +1,6 @@
 package org.parabot.osscape;
 
+import org.ethan.oss.component.RSCanvas;
 import org.ethan.oss.hook.Hook;
 import org.ethan.oss.parameters.OSScapeParameters;
 import org.ethan.oss.stub.Stub;
@@ -14,6 +15,7 @@ import org.parabot.core.asm.adapters.AddInterfaceAdapter;
 import org.parabot.core.asm.hooks.HookFile;
 import org.parabot.core.ui.components.VerboseLoader;
 import org.parabot.environment.api.utils.WebUtil;
+import org.parabot.environment.input.Mouse;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.servers.ServerManifest;
 import org.parabot.environment.servers.ServerProvider;
@@ -24,6 +26,7 @@ import org.parabot.osscape.ui.BotMenu;
 
 import javax.swing.*;
 import java.applet.Applet;
+import java.awt.*;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -123,10 +126,32 @@ public class Loader extends ServerProvider {
     }
 
     public void unloadScript(Script script) {
-//        ScriptEngine.getInstance().unload();
+        ScriptEngine.getInstance().unload();
     }
 
     @Override
     public void init() {
+    }
+
+    @Override
+    public void initMouse() {
+        System.out.println("Custom mouse initialisation");
+
+        Context context = Context.getInstance();
+        Canvas applet = getMouseCanvas();
+        if (applet != null) {
+            Mouse mouse = new Mouse(applet);
+            applet.addMouseListener(mouse);
+            applet.addMouseMotionListener(mouse);
+            context.setMouse(mouse);
+        }
+    }
+
+    private Canvas getMouseCanvas(){
+        if (Context.getInstance().getApplet() == null || Context.getInstance().getApplet().getComponentCount() == 0
+                || !(Context.getInstance().getApplet().getComponent(0) instanceof Canvas)) {
+            return null;
+        }
+        return (Canvas) Context.getInstance().getApplet().getComponent(0);
     }
 }
