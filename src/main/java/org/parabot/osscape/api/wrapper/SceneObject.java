@@ -1,11 +1,11 @@
 package org.parabot.osscape.api.wrapper;
 
-import org.ethan.oss.api.callbacks.ModelCallBack;
 import org.parabot.osscape.accessors.GameObject;
 import org.parabot.osscape.accessors.Renderable;
 import org.parabot.osscape.api.interfaces.Interactable;
 import org.parabot.osscape.api.interfaces.Locatable;
 import org.parabot.osscape.api.methods.Game;
+import org.parabot.osscape.api.methods.Models;
 import org.parabot.osscape.api.wrapper.walking.Walking;
 
 import java.awt.*;
@@ -17,7 +17,7 @@ public class SceneObject implements Locatable, Interactable {
 
     private org.parabot.osscape.accessors.SceneObject accessor;
     private Type                                      type;
-    private ObjectDefinition definition;
+    private ObjectDefinition                          definition;
 
     public SceneObject(GameObject accessor, int type) {
         new SceneObject(accessor, Type.getForID(type));
@@ -86,7 +86,7 @@ public class SceneObject implements Locatable, Interactable {
         return this.definition;
     }
 
-    public org.ethan.oss.api.wrappers.Model getModel() {
+    public Model getModel() {
         try {
             int gridX = 0;
             int gridY = 0;
@@ -105,16 +105,15 @@ public class SceneObject implements Locatable, Interactable {
             }
             int      z          = tileByte == 1 ? 210 : 0;
             Object[] renderable = new Object[]{ getRender(), null };
-            if (instanceOf(renderable[0])) {
-                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[0]), 0, gridX, gridY, z);
+            if (renderable[0] != null) {
+                return new Model((org.parabot.osscape.accessors.Model) renderable[0], 0, gridX, gridY, z);
             }
-            if (instanceOf(renderable[1])) {
-                return new org.ethan.oss.api.wrappers.Model(new org.ethan.oss.api.wrappers.Model(renderable[1]), 0, gridX, gridY, z);
+            if (renderable[1] != null) {
+                return new Model((org.parabot.osscape.accessors.Model) renderable[1], 0, gridX, gridY, z);
             }
 
-            return renderable[0] != null && ModelCallBack.get(renderable[0]) != null
-                    ? new org.ethan.oss.api.wrappers.Model(ModelCallBack.get(renderable[0]), 0, gridX, gridY, z) : null;
-        } catch (Exception e) {
+            return new Model(Models.get(renderable[0]), 0, gridX, gridY, z);
+        } catch (Exception ignored) {
 
         }
         return null;

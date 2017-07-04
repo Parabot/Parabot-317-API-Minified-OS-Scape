@@ -229,7 +229,7 @@ public class Game {
                 }
             }
 
-            return null;
+            return STATE_LOGGED_IN;
         }
 
         public int getStateId() {

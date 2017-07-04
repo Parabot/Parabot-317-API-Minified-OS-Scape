@@ -1,9 +1,9 @@
 package org.parabot.osscape.api.wrapper;
 
-import org.ethan.oss.api.input.Mouse;
 import org.ethan.oss.utils.Condition;
 import org.ethan.oss.utils.Random;
 import org.ethan.oss.utils.Utilities;
+import org.parabot.environment.input.Mouse;
 import org.parabot.osscape.Loader;
 import org.parabot.osscape.accessors.Actor;
 import org.parabot.osscape.accessors.Npc;
@@ -178,12 +178,12 @@ public abstract class Character implements Locatable, Interactable {
             if (this.isOnScreen()) {
                 Point ip = null;
                 ip = this.getInteractPoint();
-                if (Mouse.getLocation().distance(ip) <= 5) {
+                if (Mouse.getInstance().getPoint().distance(ip) <= 5) {
                     ip = this.getInteractPoint();
-                    Mouse.move(ip);
+                    Mouse.getInstance().moveMouse((int) ip.getX(), (int) ip.getY());
                     Condition.sleep(75);
                 } else {
-                    Mouse.move(ip);
+                    Mouse.getInstance().moveMouse((int) ip.getX(), (int) ip.getY());
                     Condition.sleep(75);
                 }
 
@@ -193,11 +193,11 @@ public abstract class Character implements Locatable, Interactable {
                     if (index == 0) {
                         if (org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
                             Condition.sleep(Random.nextInt(80, 150));
-                            Mouse.click(true);
+                            Mouse.getInstance().click(Mouse.getInstance().getPoint());
                             return true;
                         }
                     } else {
-                        Mouse.click(false);
+                        Mouse.getInstance().click(Mouse.getInstance().getPoint(), false);
                         Condition.wait(new Condition.Check() {
                             public boolean poll() {
                                 return org.parabot.osscape.api.methods.Menu.isOpen();
@@ -209,22 +209,22 @@ public abstract class Character implements Locatable, Interactable {
                     int   index = org.parabot.osscape.api.methods.Menu.index(action, this.getName());
                     Point p     = org.parabot.osscape.api.methods.Menu.getSuitablePoint(index);
                     if (p.x > 5 && p.y > 5) {
-                        Mouse.move(p.x, p.y);
+                        Mouse.getInstance().moveMouse(p.x, p.y);
                     }
-                    if (Mouse.getLocation().distance(p) <= Random.nextInt(1, 5)) {
+                    if (Mouse.getInstance().getPoint().distance(p) <= Random.nextInt(1, 5)) {
                         Condition.sleep(Random.nextInt(60, 100));
-                        Mouse.click(true);
+                        Mouse.getInstance().click(Mouse.getInstance().getPoint());
                         return true;
                     }
                 } else if (org.parabot.osscape.api.methods.Menu.isOpen() && !org.parabot.osscape.api.methods.Menu.contains(action, this.getName())) {
                     int   index = org.parabot.osscape.api.methods.Menu.index("Cancel");
                     Point p     = org.parabot.osscape.api.methods.Menu.getSuitablePoint(index);
                     if (p.x > 5 && p.y > 5) {
-                        Mouse.move(p.x, p.y);
+                        Mouse.getInstance().moveMouse(p.x, p.y);
                     }
-                    if (Mouse.getLocation().distance(p) <= Random.nextInt(1, 5)) {
+                    if (Mouse.getInstance().getPoint().distance(p) <= Random.nextInt(1, 5)) {
                         Condition.sleep(Random.nextInt(60, 100));
-                        Mouse.click(true);
+                        Mouse.getInstance().click(Mouse.getInstance().getPoint());
                         return true;
                     }
                 }
@@ -269,14 +269,14 @@ public abstract class Character implements Locatable, Interactable {
         Point interactingPoint = this.getInteractPoint();
         Model bounds           = getModel();
         for (int i = 0; i < 3; i++) {
-            if (bounds == null || bounds.contains(Mouse.getLocation())) {
-                Mouse.click(left);
+            if (bounds == null || bounds.contains(Mouse.getInstance().getPoint())) {
+                Mouse.getInstance().click(Mouse.getInstance().getPoint());
                 return true;
             }
             if (!bounds.contains(interactingPoint)) {
                 interactingPoint = this.getInteractPoint();
             }
-            Mouse.move(interactingPoint);
+            Mouse.getInstance().moveMouse((int) interactingPoint.getX(), (int) interactingPoint.getY());
         }
         return false;
     }
